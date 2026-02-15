@@ -1,30 +1,103 @@
-﻿<Window x:Class="Maki_it_happen.GameWindow"
+<Window x:Class="Maki_it_happen.GameWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Kuchnia - Maki it happen" Height="600" Width="800" Background="#34495E">
+        Title="Kuchnia - Maki it happen" Height="750" Width="1000" Background="#2C3E50">
+
+    <Window.Resources>
+        <Style x:Key="SushiButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#E74C3C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="12" 
+                                BorderBrush="White" 
+                                BorderThickness="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Background="#2C3E50" Margin="15,0,15,0">
-            <TextBlock x:Name="GoldText" Text="ZŁOTO: 0 💰" Foreground="#F1C40F" FontSize="20" FontWeight="Bold"/>
-        </StackPanel>
+        <Border Grid.Row="0" Background="#34495E" BorderThickness="0,0,0,3" BorderBrush="#1A252F">
+            <Grid>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <Label Content="tu będo zamówienia sie pokazywały"/>
+                </ScrollViewer>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="ZWIŃ MAKI (+10 złota)" 
-                    Width="300" Height="100" 
-                    FontSize="20"
-                    Click="MakiClick">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="50"/>
-                    </Style>
-                </Button.Resources>
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="30,0">
+                    <TextBlock x:Name="GoldDisplay" Text="KASA: 100$" Foreground="#F1C40F" FontSize="26" FontWeight="Bold"/>
+                    <Button Content="SKLEP 🛒" Background="#9B59B6" Foreground="White" Padding="10,5" Margin="0,5,0,0" Click="OpenShop_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
 
-            </Button>
-        </StackPanel>
+        <Canvas Grid.Row="1"/>
+
+        <Border Grid.Row="2" Background="#27AE60">
+            <Grid x:Name="PlateArea">
+                <Ellipse Width="200" Height="90" Fill="White" VerticalAlignment="Center"/>
+                <Canvas x:Name="SushiLayers" Width="200" Height="90" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3" Background="#7F8C8D" CornerRadius="40,40,0,0">
+            <UniformGrid Columns="5" Margin="20">
+                <Button Style="{StaticResource SushiButtonStyle}" Click="AddRice_Click">
+                    <StackPanel>
+                        <TextBlock Text="🍚" FontSize="40" HorizontalAlignment="Center"/>
+                        <TextBlock Text="RYŻ" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="RiceCountLabel" Text="Szt: 10" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Style="{StaticResource SushiButtonStyle}" Click="AddFish_Click">
+                    <StackPanel>
+                        <TextBlock Text="🐟" FontSize="40" HorizontalAlignment="Center"/>
+                        <TextBlock Text="ŁOSOŚ" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="FishCountLabel" Text="Szt: 5" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Style="{StaticResource SushiButtonStyle}" Click="AddCucumber_Click">
+                    <StackPanel>
+                        <TextBlock Text="🥒" FontSize="40" HorizontalAlignment="Center"/>
+                        <TextBlock Text="OGÓREK" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="CucumberCountLabel" Text="Szt: 8" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Style="{StaticResource SushiButtonStyle}" Click="AddNori_Click">
+                    <StackPanel>
+                        <TextBlock Text="⬛" FontSize="40" HorizontalAlignment="Center"/>
+                        <TextBlock Text="NORI" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="NoriCountLabel" Text="Szt: 12" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Background="#2ECC71" Click="Serve_Click">
+                    <StackPanel>
+                        <TextBlock Text="✅" FontSize="40" HorizontalAlignment="Center"/>
+                        <TextBlock Text="SERWUJ!" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+            </UniformGrid>
+        </Border>
     </Grid>
 </Window>
