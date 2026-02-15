@@ -1,0 +1,67 @@
+﻿<Window x:Class="Maki_it_happen.MainWindow"  
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MAKI IT HAPPEN" Height="600" Width="800" Background="#2C3E50">
+
+    <Window.Resources>
+        <Style x:Key="SushiButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#E74C3C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="15" 
+                                BorderBrush="White" 
+                                BorderThickness="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <TextBlock Text="MAKI IT HAPPEN" 
+                       FontSize="60" 
+                       Foreground="#F1C40F" 
+                       FontWeight="ExtraBold">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="5" Color="Black"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <TextBlock Text="Najlepsze sushi w Twoim regionie!" 
+                       Foreground="#BDC3C7" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,0,0,40" 
+                       FontStyle="Italic"/>
+
+            <Button Content="ZACZNIJ PRZYGODĘ" Style="{StaticResource SushiButtonStyle}" Click="Graj_Click"/>
+            <Button Content="USTAWIENIA" Style="{StaticResource SushiButtonStyle}" />
+            <Button Content="WYJDŹ" Style="{StaticResource SushiButtonStyle}" Click="Wyjdz_Click"/>
+
+        </StackPanel>
+
+        <Border Grid.Row="1" Background="#1A252F" Padding="10">
+            <DockPanel>
+                <TextBlock Text="Wersja 0.0001 - Beta Rice" Foreground="#7F8C8D" DockPanel.Dock="Left"/>
+                <TextBlock Text="Kuchnia: Już sie grzeje" Foreground="#27AE60" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+            </DockPanel>
+        </Border>
+
+    </Grid>
+</Window>
