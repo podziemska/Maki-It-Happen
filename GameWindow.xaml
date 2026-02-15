@@ -48,7 +48,9 @@
             </Grid>
         </Border>
 
-        <Canvas Grid.Row="1"/>
+        <Canvas Grid.Row="1">
+            <Label Content="Label" Canvas.Left="379" Canvas.Top="153" HorizontalAlignment="Left" VerticalAlignment="Center" Width="277" x:Name="usun"/>
+        </Canvas>
 
         <Border Grid.Row="2" Background="#27AE60">
             <Grid x:Name="PlateArea">

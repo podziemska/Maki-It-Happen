@@ -1,12 +1,69 @@
 ﻿<Window x:Class="Maki_it_happen.ShopWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Maki_it_happen"
-        mc:Ignorable="d"
-        Title="ShopWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="to do sklepik szkolny :D"/>
+        Title="Sklep u Mistrza Sushi" Height="500" Width="500" Background="#8E44AD" WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <Style x:Key="ShopItemStyle" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#2C3E50"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="SKLEP MISTRZA SUSHI w budowie" FontSize="26" FontWeight="Bold" Foreground="White" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+
+            <Button Style="{StaticResource ShopItemStyle}" Click="BuyRice_Click">
+                <Grid Margin="15,0">
+                    <TextBlock Text="🍚 RYŻ (x10)" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="20$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                </Grid>
+            </Button>
+
+            <Button Style="{StaticResource ShopItemStyle}" Click="BuyFish_Click">
+                <Grid Margin="15,0">
+                    <TextBlock Text="🐟 ŁOSOŚ (x5)" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="50$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                </Grid>
+            </Button>
+
+            <Button Style="{StaticResource ShopItemStyle}" Click="BuyNori_Click">
+                <Grid Margin="15,0">
+                    <TextBlock Text="⬛ NORI (x20)" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                </Grid>
+            </Button>
+
+        </StackPanel>
+
+        <Button Grid.Row="2" Content="WRÓĆ DO KUCHNI" Height="50" Background="#2ECC71" Foreground="White" 
+                FontWeight="Bold" FontSize="16" BorderThickness="0" Click="BackToKitchen_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>
