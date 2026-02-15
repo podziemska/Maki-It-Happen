@@ -1,22 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Maki_it_happen
 {
-    /// <summary>
-    /// Logika interakcji dla klasy GameWindow.xaml
-    /// </summary>
     public partial class GameWindow : Window
     {
         public GameWindow()
@@ -24,17 +9,41 @@ namespace Maki_it_happen
             InitializeComponent();
         }
 
-       
-            int zloto = 0;
+        private void AddRice_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Zmniejsz licznik ryżu o 1
+            // TODO: Dodaj grafikę ryżu na talerz 
+        }
 
- 
-            private void MakiClick(object sender, System.Windows.RoutedEventArgs e)
-            {
-                zloto += 10;
-                GoldText.Text = "ZŁOTO: " + zloto + " 💰";
-            }
-        
+        private void AddFish_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Zmniejsz licznik ryby o 1
+            // TODO: Dodaj grafikę ryby na talerz
+        }
+
+        private void AddCucumber_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Zmniejsz licznik ogórka o 1
+            // TODO: Dodaj grafikę ogórka na talerz
+        }
+
+        private void AddNori_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Zmniejsz licznik nori o 1
+            // TODO: Dodaj grafikę nori na talerz
+        }
+
+        private void Serve_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Sprawdź czy składniki na talerzu pasują do zamówienia
+            // TODO: Jeśli tak -> dodaj kasę i wyczyść talerz
+        }
+
+        private void OpenShop_Click(object sender, RoutedEventArgs e)
+        {
+            // Tworzymy i otwieramy nowe okno sklepu
+            ShopWindow oknoSklepu = new ShopWindow();
+            oknoSklepu.ShowDialog(); // ShowDialog blokuje kuchnię, póki nie zamkniesz sklepu
+        }
     }
-
 }
-
