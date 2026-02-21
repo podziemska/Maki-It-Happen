@@ -21,7 +21,9 @@ namespace WpfApp1
     {
         public SalaGlowna()
         {
-            InitializeComponent();
+            //Nazwa „InitializeComponent” nie istnieje w bieżącym kontekście - taki blad wyskakuje dlatego komentuje ci to blanka poki co
+            //InitializeComponent();
         }
     }
 }
+
