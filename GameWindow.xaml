@@ -58,48 +58,86 @@
                 <Canvas x:Name="SushiLayers" Width="200" Height="90" VerticalAlignment="Center"/>
             </Grid>
         </Border>
-
         <Border Grid.Row="3" Background="#7F8C8D" CornerRadius="40,40,0,0">
-            <UniformGrid Columns="5" Margin="20">
-                <Button Style="{StaticResource SushiButtonStyle}" Click="AddRice_Click">
-                    <StackPanel>
-                        <TextBlock Text="🍚" FontSize="40" HorizontalAlignment="Center"/>
-                        <TextBlock Text="RYŻ" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="RiceCountLabel" Text="Szt: 10" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
+            <Grid Margin="20">
 
-                <Button Style="{StaticResource SushiButtonStyle}" Click="AddFish_Click">
-                    <StackPanel>
-                        <TextBlock Text="🐟" FontSize="40" HorizontalAlignment="Center"/>
-                        <TextBlock Text="ŁOSOŚ" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="FishCountLabel" Text="Szt: 5" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
+                <!-- PANEL WYBORU TYPU SUSHI -->
+                <UniformGrid x:Name="SushiTypePanel" Columns="4">
+                    <Button Style="{StaticResource SushiButtonStyle}" Click="Onigiri_Click">
+                        <StackPanel>
+                            <TextBlock Text="🍙" FontSize="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="ONIGIRI" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-                <Button Style="{StaticResource SushiButtonStyle}" Click="AddCucumber_Click">
-                    <StackPanel>
-                        <TextBlock Text="🥒" FontSize="40" HorizontalAlignment="Center"/>
-                        <TextBlock Text="OGÓREK" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="CucumberCountLabel" Text="Szt: 8" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
+                    <Button Style="{StaticResource SushiButtonStyle}" Click="Nigiri_Click">
+                        <StackPanel>
+                            <TextBlock Text="🍣" FontSize="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="NIGIRI" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-                <Button Style="{StaticResource SushiButtonStyle}" Click="AddNori_Click">
-                    <StackPanel>
-                        <TextBlock Text="⬛" FontSize="40" HorizontalAlignment="Center"/>
-                        <TextBlock Text="NORI" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="NoriCountLabel" Text="Szt: 12" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
+                    <Button Style="{StaticResource SushiButtonStyle}" Click="Hosomaki_Click">
+                        <StackPanel>
+                            <TextBlock Text="🥢" FontSize="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="HOSOMAKI" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-                <Button Background="#2ECC71" Click="Serve_Click">
-                    <StackPanel>
-                        <TextBlock Text="✅" FontSize="40" HorizontalAlignment="Center"/>
-                        <TextBlock Text="SERWUJ!" FontWeight="Bold"/>
-                    </StackPanel>
-                </Button>
-            </UniformGrid>
+                    <Button Style="{StaticResource SushiButtonStyle}" Click="Futomaki_Click">
+                        <StackPanel>
+                            <TextBlock Text="🍱" FontSize="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="FUTOMAKI" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </UniformGrid>
+
+                <!-- PANEL SKŁADNIKÓW (ukryty) -->
+                <UniformGrid x:Name="IngredientsPanel" Columns="5" Visibility="Collapsed">
+
+                    <Button x:Name="RiceButton" Style="{StaticResource SushiButtonStyle}" Click="AddRice_Click ">
+                        <StackPanel>
+                            <TextBlock Text="🍚" FontSize="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="RYŻ" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="RiceCountLabel" Text="Szt: 10" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="FishButton" Style="{StaticResource SushiButtonStyle}" Click="AddFish_Click">
+                        <StackPanel>
+                            <TextBlock Text="🐟" FontSize="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="ŁOSOŚ" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="FishCountLabel" Text="Szt: 5" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="CucumberButton" Style="{StaticResource SushiButtonStyle}" Click="AddCucumber_Click">
+                        <StackPanel>
+                            <TextBlock Text="🥒" FontSize="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="OGÓREK" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="CucumberCountLabel" Text="Szt: 8" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="NoriButton" Style="{StaticResource SushiButtonStyle}" Click="AddNori_Click">
+                        <StackPanel>
+                            <TextBlock Text="⬛" FontSize="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="NORI" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="NoriCountLabel" Text="Szt: 12" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Background="#2ECC71" Click="Serve_Click">
+                        <StackPanel>
+                            <TextBlock Text="✅" FontSize="40" HorizontalAlignment="Center"/>
+                            <TextBlock Text="SERWUJ!" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+
+                </UniformGrid>
+
+            </Grid>
         </Border>
+
     </Grid>
 </Window>
