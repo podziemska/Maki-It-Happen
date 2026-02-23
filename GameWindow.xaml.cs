@@ -1,4 +1,6 @@
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Maki_it_happen
 {
@@ -9,6 +11,7 @@ namespace Maki_it_happen
         int IloscOgorka = 8;
         int IloscNori = 12;
 
+        
         public GameWindow()
         {
             InitializeComponent();
@@ -28,7 +31,21 @@ namespace Maki_it_happen
                 RiceCountLabel.Text = "Ryż się skończył! Idz do sklepu!";
             }
 
-            // TODO: Dodaj grafikę ryżu na talerz 
+
+            Image riceImage = new Image();
+            riceImage.Source = new BitmapImage(new Uri("pack://application:,,,/ryz.png"));
+            
+
+            riceImage.Width = 450;
+            riceImage.Height = 90;
+
+            Canvas.SetLeft(riceImage, -125);
+            Canvas.SetTop(riceImage, -2);
+
+            SushiLayers.Children.Add(riceImage);
+
+
+
         }
 
         private void AddFish_Click(object sender, RoutedEventArgs e)
@@ -90,6 +107,63 @@ namespace Maki_it_happen
             // Tworzymy i otwieramy nowe okno sklepu
             ShopWindow oknoSklepu = new ShopWindow();
             oknoSklepu.ShowDialog(); // ShowDialog blokuje kuchnię, póki nie zamkniesz sklepu
+        }
+
+        private void ShowIngredients()
+        {
+            SushiTypePanel.Visibility = Visibility.Collapsed;
+            IngredientsPanel.Visibility = Visibility.Visible;
+
+            
+            RiceButton.Visibility = Visibility.Visible;
+            FishButton.Visibility = Visibility.Visible;
+            CucumberButton.Visibility = Visibility.Visible;
+            NoriButton.Visibility = Visibility.Visible;
+
+            
+            if (selectedSushiType == "Onigiri")
+            {
+               
+                CucumberButton.Visibility = Visibility.Collapsed;
+            }
+
+            if (selectedSushiType == "Nigiri")
+            {
+                CucumberButton.Visibility = Visibility.Collapsed;
+                NoriButton.Visibility = Visibility.Collapsed;
+            }
+
+            if (selectedSushiType == "Hosomaki")
+            {
+                CucumberButton.Visibility = Visibility.Collapsed;
+            }
+
+            
+        }
+        private string selectedSushiType = "";
+
+        private void Onigiri_Click(object sender, RoutedEventArgs e)
+        {
+            selectedSushiType = "Onigiri";
+            ShowIngredients();
+        }
+
+        private void Nigiri_Click(object sender, RoutedEventArgs e)
+        {
+            selectedSushiType = "Nigiri";
+            ShowIngredients();
+        }
+
+        private void Hosomaki_Click(object sender, RoutedEventArgs e)
+        {
+            selectedSushiType = "Hosomaki";
+            ShowIngredients();
+        }
+
+        private void Futomaki_Click(object sender, RoutedEventArgs e)
+        {
+            selectedSushiType = "Futomaki";
+            ShowIngredients();
         }
     }
 }
