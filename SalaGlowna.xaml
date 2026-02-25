@@ -7,9 +7,8 @@
         mc:Ignorable="d"
         Title="SalaGlowna" Height="450" Width="800">
 
-    <!-- Tło okna -->
     <Window.Background>
-        <ImageBrush ImageSource="/sala główna.png" Stretch="UniformToFill"/>
+        <ImageBrush ImageSource="/salagłówna.20.png" Stretch="UniformToFill"/>
     </Window.Background>
 
     <Grid>
