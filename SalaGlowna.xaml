@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="SalaGlowna" Height="450" Width="800">
 
+    <!-- Tło okna -->
     <Window.Background>
-        <ImageBrush ImageSource="/salagłówna.20.png" Stretch="UniformToFill"/>
+        <ImageBrush ImageSource="/sala główna.png" Stretch="UniformToFill"/>
     </Window.Background>
 
     <Grid>
@@ -26,7 +27,8 @@
 
         <Button
             Grid.Row="2"
-            Content="TUTAJ PRZYCISK DO KUCHNI"
+            Content="KUCHNIA"
+            Click="Kuchnia"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Background="LightGray"
