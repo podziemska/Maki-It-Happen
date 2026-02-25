@@ -23,5 +23,11 @@ namespace Maki_it_happen
         {
             InitializeComponent();
         }
+        private void Kuchnia(object sender, RoutedEventArgs e)
+        {
+            GameWindow okno = new GameWindow();
+            okno.Show();
+            this.Close();
+        }
     }
 }
