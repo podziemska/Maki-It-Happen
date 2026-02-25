@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace Maki_it_happen
 {
     /// <summary>
     /// Logika interakcji dla klasy SalaGlowna.xaml
@@ -21,9 +21,7 @@ namespace WpfApp1
     {
         public SalaGlowna()
         {
-            //Nazwa „InitializeComponent” nie istnieje w bieżącym kontekście - taki blad wyskakuje dlatego komentuje ci to blanka poki co
-            //InitializeComponent();
+            InitializeComponent();
         }
     }
 }
-
