@@ -27,8 +27,12 @@ namespace Maki_it_happen
         private void Kuchnia(object sender, RoutedEventArgs e)
         {
             GameWindow okno = new GameWindow();
+
+            // Ustawienie startu na œrodku ekranu
+            okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             okno.Show();
-            this.Close();
+            this.Close(); // Zamyka obecne okno (np. Salê G³ówn¹)
         }
         private void OpenShop_Click(object sender, RoutedEventArgs e)
         {

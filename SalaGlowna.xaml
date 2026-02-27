@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maki_it_happen"
         mc:Ignorable="d"
-        Title="SalaGlowna" Height="450" Width="800">
+        Title="SalaGlowna" Height="750" Width="1000">
 
 
     <!-- Tło okna -->

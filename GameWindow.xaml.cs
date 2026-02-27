@@ -174,10 +174,19 @@ namespace Maki_it_happen;
         private void OpenSala_Click(object sender, RoutedEventArgs e)
         {
         SalaGlowna oknoSala = new SalaGlowna();
-        
-        this.Hide(); // Ukryj kuchnię, gdy otwierasz salę
-        oknoSala.ShowDialog(); // ShowDialog blokuje kuchnię, póki nie zamkniesz sali kocham te generowane komentarze
-        
+
+        //liczenie renczne czy cos
+        oknoSala.WindowStartupLocation = WindowStartupLocation.Manual;
+
+        // Obliczanie środka w "procentach" (50% szerokości ekranu - 50% szerokości okna)
+        double screenWidth = SystemParameters.PrimaryScreenWidth;
+        double screenHeight = SystemParameters.PrimaryScreenHeight;
+
+        oknoSala.Left = (screenWidth / 2) - (oknoSala.Width / 2);
+        oknoSala.Top = (screenHeight / 2) - (oknoSala.Height / 2);
+
+        oknoSala.Show();
+        this.Hide();
     }
 }
 
