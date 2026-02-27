@@ -25,7 +25,7 @@ namespace Maki_it_happen
                 _GW.IloscRyzu += 10;
                     _GW.RiceCountLabel.Text = $"Szt: {_GW.IloscRyzu}";
                 _GW.KasaLabel.Text = $"Kasa: {_GW.Kasa}";
-                // 
+                
                 var sala = Application.Current.Windows.OfType<SalaGlowna>().FirstOrDefault();
 
                 if (sala != null)

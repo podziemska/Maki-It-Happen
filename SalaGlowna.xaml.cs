@@ -19,7 +19,7 @@ namespace Maki_it_happen
     /// </summary>
     public partial class SalaGlowna : Window
     {
-       // public int Kasa = GameWindow.Kasa; // Przyk³adowa iloœæ pieniêdzy, któr¹ gracz ma na start
+       
         public SalaGlowna()
         {
             InitializeComponent();

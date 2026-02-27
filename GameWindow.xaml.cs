@@ -170,5 +170,14 @@ namespace Maki_it_happen;
             selectedSushiType = "Futomaki";
             ShowIngredients();
         }
+
+        private void OpenSala_Click(object sender, RoutedEventArgs e)
+        {
+        SalaGlowna oknoSala = new SalaGlowna();
+        
+        this.Hide(); // Ukryj kuchnię, gdy otwierasz salę
+        oknoSala.ShowDialog(); // ShowDialog blokuje kuchnię, póki nie zamkniesz sali kocham te generowane komentarze
+        
     }
+}
 
