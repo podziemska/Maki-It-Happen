@@ -9,4 +9,24 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="ikonki jedzenia.png" />
+    <None Remove="lososNowy.png" />
+    <None Remove="Nori.png" />
+    <None Remove="ogorek.png" />
+    <None Remove="ryz.png" />
+    <None Remove="RyzNowy.png" />
+    <None Remove="sala_glowna.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ikonki jedzenia.png" />
+    <Resource Include="lososNowy.png" />
+    <Resource Include="Nori.png" />
+    <Resource Include="ogorek.png" />
+    <Resource Include="ryz.png" />
+    <Resource Include="RyzNowy.png" />
+    <Resource Include="sala_glowna.png" />
+  </ItemGroup>
+
 </Project>

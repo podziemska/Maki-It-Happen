@@ -19,6 +19,7 @@ namespace Maki_it_happen
     /// </summary>
     public partial class SalaGlowna : Window
     {
+       // public int Kasa = GameWindow.Kasa; // Przyk³adowa iloœæ pieniêdzy, któr¹ gracz ma na start
         public SalaGlowna()
         {
             InitializeComponent();
@@ -28,6 +29,12 @@ namespace Maki_it_happen
             GameWindow okno = new GameWindow();
             okno.Show();
             this.Close();
+        }
+        private void OpenShop_Click(object sender, RoutedEventArgs e)
+        {
+            // Tworzymy i otwieramy nowe okno sklepu
+            //ShopWindow oknoSklepu = new ShopWindow();
+            //oknoSklepu.ShowDialog(); // ShowDialog blokuje kuchniê, póki nie zamkniesz sklepu
         }
     }
 }

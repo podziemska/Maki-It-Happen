@@ -42,7 +42,7 @@
                 </ScrollViewer>
 
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="30,0">
-                    <TextBlock x:Name="GoldDisplay" Text="KASA: 100$" Foreground="#F1C40F" FontSize="26" FontWeight="Bold"/>
+                    <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#F1C40F" FontSize="26" FontWeight="Bold"/>
                     <Button Content="SKLEP 🛒" Background="#9B59B6" Foreground="White" Padding="10,5" Margin="0,5,0,0" Click="OpenShop_Click"/>
                 </StackPanel>
             </Grid>
@@ -99,7 +99,7 @@
                         <StackPanel>
                             <TextBlock Text="🍚" FontSize="40" HorizontalAlignment="Center"/>
                             <TextBlock Text="RYŻ" HorizontalAlignment="Center"/>
-                            <TextBlock x:Name="RiceCountLabel" Text="Szt: 10" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="RiceCountLabel" Text="Szt: 0" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Button>
 

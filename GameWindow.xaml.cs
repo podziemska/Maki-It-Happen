@@ -2,19 +2,21 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace Maki_it_happen
-{
+namespace Maki_it_happen;
+
     public partial class GameWindow : Window
     {
-        int IloscRyzu = 10;
-        int IloscRyby = 5;
-        int IloscOgorka = 8;
-        int IloscNori = 12;
+        public int IloscRyzu = 0;
+        public int IloscRyby = 5;
+        public int IloscOgorka = 8;
+        public int IloscNori = 12;
+        public int Kasa = 100; // Przykładowa ilość pieniędzy, którą gracz ma na start
 
-        
+
         public GameWindow()
         {
             InitializeComponent();
+            
         }
 
         private void AddRice_Click(object sender, RoutedEventArgs e)
@@ -31,20 +33,23 @@ namespace Maki_it_happen
                 RiceCountLabel.Text = "Ryż się skończył! Idz do sklepu!";
             }
 
+            if (IloscRyzu > 0)
+            {
+                Image riceImage = new Image();
+                riceImage.Source = new BitmapImage(new Uri("/ryz.png", UriKind.Relative));
 
-            Image riceImage = new Image();
-            riceImage.Source = new BitmapImage(new Uri("pack://application:,,,/ryz.png"));
-            
+                riceImage.Width = 450;
+                riceImage.Height = 90;
 
-            riceImage.Width = 450;
-            riceImage.Height = 90;
+                Canvas.SetLeft(riceImage, -125);
+                Canvas.SetTop(riceImage, -2);
 
-            Canvas.SetLeft(riceImage, -125);
-            Canvas.SetTop(riceImage, -2);
-
-            SushiLayers.Children.Add(riceImage);
-
-
+                SushiLayers.Children.Add(riceImage);
+            }
+            else
+            {
+                MessageBox.Show("Nie masz już ryżu! Idź do sklepu, aby kupić więcej.");
+            }
 
         }
 
@@ -105,7 +110,7 @@ namespace Maki_it_happen
         private void OpenShop_Click(object sender, RoutedEventArgs e)
         {
             // Tworzymy i otwieramy nowe okno sklepu
-            ShopWindow oknoSklepu = new ShopWindow();
+            ShopWindow oknoSklepu = new ShopWindow(this);
             oknoSklepu.ShowDialog(); // ShowDialog blokuje kuchnię, póki nie zamkniesz sklepu
         }
 
@@ -166,4 +171,4 @@ namespace Maki_it_happen
             ShowIngredients();
         }
     }
-}
+

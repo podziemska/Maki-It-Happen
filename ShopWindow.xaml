@@ -31,32 +31,57 @@
 
         <TextBlock Text="SKLEP MISTRZA SUSHI w budowie" FontSize="26" FontWeight="Bold" Foreground="White" 
                    HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" Cursor="">
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <Button Style="{StaticResource ShopItemStyle}" Click="BuyRice_Click">
+                    <Grid Margin="15,0">
+                        <TextBlock Text="🍚 RYŻ (x10)" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="20$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                    </Grid>
+                </Button>
 
-            <Button Style="{StaticResource ShopItemStyle}" Click="BuyRice_Click">
-                <Grid Margin="15,0">
-                    <TextBlock Text="🍚 RYŻ (x10)" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="20$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
-                </Grid>
-            </Button>
+                <Button Style="{StaticResource ShopItemStyle}" Click="BuyFish_Click">
+                    <Grid Margin="15,0">
+                        <TextBlock Text="🐟 ŁOSOŚ (x5)" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="50$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                    </Grid>
+                </Button>
 
-            <Button Style="{StaticResource ShopItemStyle}" Click="BuyFish_Click">
-                <Grid Margin="15,0">
-                    <TextBlock Text="🐟 ŁOSOŚ (x5)" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="50$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
-                </Grid>
-            </Button>
+                <Button Style="{StaticResource ShopItemStyle}" Click="BuyNori_Click">
+                    <Grid Margin="15,0">
+                        <TextBlock Text="⬛ NORI (x20)" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource ShopItemStyle}" >
+                    <Grid Margin="15,0">
+                        <TextBlock Text="cos" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource ShopItemStyle}" >
+                    <Grid Margin="15,0">
+                        <TextBlock Text="cos" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource ShopItemStyle}">
+                    <Grid Margin="15,0">
+                        <TextBlock Text="cos" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                    </Grid>
+                </Button>
+                <Button Style="{StaticResource ShopItemStyle}" >
+                    <Grid Margin="15,0">
+                        <TextBlock Text="cos" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                    </Grid>
+                </Button>
 
-            <Button Style="{StaticResource ShopItemStyle}" Click="BuyNori_Click">
-                <Grid Margin="15,0">
-                    <TextBlock Text="⬛ NORI (x20)" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
-                </Grid>
-            </Button>
 
-        </StackPanel>
-
+            </StackPanel>
+        </ScrollViewer>
         <Button Grid.Row="2" Content="WRÓĆ DO KUCHNI" Height="50" Background="#2ECC71" Foreground="White" 
                 FontWeight="Bold" FontSize="16" BorderThickness="0" Click="BackToKitchen_Click">
             <Button.Resources>
