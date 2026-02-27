@@ -7,7 +7,7 @@ namespace Maki_it_happen
 
 
         private GameWindow _GW;
-        
+       
 
         // Jeden wspólny konstruktor
         public ShopWindow(GameWindow gameWindow)
@@ -25,6 +25,14 @@ namespace Maki_it_happen
                 _GW.IloscRyzu += 10;
                     _GW.RiceCountLabel.Text = $"Szt: {_GW.IloscRyzu}";
                 _GW.KasaLabel.Text = $"Kasa: {_GW.Kasa}";
+                // 
+                var sala = Application.Current.Windows.OfType<SalaGlowna>().FirstOrDefault();
+
+                if (sala != null)
+                {
+                    sala.KasaLabel.Text = $"Kasa: {_GW.Kasa}";
+                }
+
 
             }
             else

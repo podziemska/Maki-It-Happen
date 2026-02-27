@@ -21,7 +21,7 @@
 
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="576,0,0,0" Height="68" Width="146">
             <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#62B5B5" FontSize="24" FontWeight="Bold" Height="42" Width="147"/>
-            <Label Content="nie widze sensu żeby tu był sklep wystarczy kasa"/>
+           
         </StackPanel>
 
         <Button
