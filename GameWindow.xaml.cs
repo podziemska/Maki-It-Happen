@@ -1,12 +1,13 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Maki_it_happen;
 
     public partial class GameWindow : Window
     {
-        public int IloscRyzu = 0;
+        public int IloscRyzu = 10;
         public int IloscRyby = 5;
         public int IloscOgorka = 8;
         public int IloscNori = 12;
@@ -22,36 +23,27 @@ namespace Maki_it_happen;
         private void AddRice_Click(object sender, RoutedEventArgs e)
         {
             usun.Content = "ryż";
-            
-            
-            if (IloscRyzu >= 1)
-            {
-                IloscRyzu--;
-                RiceCountLabel.Text = $"Szt: {IloscRyzu}";
-            }
-            else {
-                RiceCountLabel.Text = "Ryż się skończył! Idz do sklepu!";
-            }
 
-            if (IloscRyzu > 0)
-            {
-                Image riceImage = new Image();
-                riceImage.Source = new BitmapImage(new Uri("/ryz.png", UriKind.Relative));
 
-                riceImage.Width = 450;
-                riceImage.Height = 90;
-
-                Canvas.SetLeft(riceImage, -125);
-                Canvas.SetTop(riceImage, -2);
-
-                SushiLayers.Children.Add(riceImage);
-            }
-            else
-            {
-                MessageBox.Show("Nie masz już ryżu! Idź do sklepu, aby kupić więcej.");
-            }
-
+        if (IloscRyzu <= 0)
+        {
+            MessageBox.Show("Nie masz już ryżu!");
+            return;
         }
+
+        IloscRyzu--;
+        RiceCountLabel.Text = $"Szt: {IloscRyzu}";
+
+        Image riceImage = new Image();
+        riceImage.Source = new BitmapImage(
+            new Uri("/images/RyzG.png", UriKind.Relative));
+        riceImage.Width = SushiLayers.ActualWidth;
+        riceImage.Height = SushiLayers.ActualHeight;
+        riceImage.Stretch = Stretch.Fill;
+
+        SushiLayers.Children.Add(riceImage);
+
+    } // nie dziala jeszcze!!
 
         private void AddFish_Click(object sender, RoutedEventArgs e)
         {
