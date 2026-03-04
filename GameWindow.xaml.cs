@@ -33,17 +33,16 @@ namespace Maki_it_happen;
 
         IloscRyzu--;
         RiceCountLabel.Text = $"Szt: {IloscRyzu}";
-
         Image riceImage = new Image();
         riceImage.Source = new BitmapImage(
-            new Uri("/images/RyzG.png", UriKind.Relative));
-        riceImage.Width = SushiLayers.ActualWidth;
-        riceImage.Height = SushiLayers.ActualHeight;
+        new Uri("pack://application:,,,/images/RyzG.png"));
+
         riceImage.Stretch = Stretch.Fill;
+        Grid.SetRowSpan(riceImage, 4);
+        MainGrid.Children.Add(riceImage);
+        Panel.SetZIndex(riceImage, -1);
 
-        SushiLayers.Children.Add(riceImage);
-
-    } // nie dziala jeszcze!!
+    }
 
         private void AddFish_Click(object sender, RoutedEventArgs e)
         {
