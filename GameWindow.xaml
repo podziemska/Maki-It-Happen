@@ -31,11 +31,11 @@
         <ImageBrush ImageSource="/images/GameWindow.jpg"/>
     </Window.Background>
 
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="126.04"/>
             <RowDefinition Height="130"/>
         </Grid.RowDefinitions>
 
@@ -53,17 +53,25 @@
             </Grid>
         </Border>
 
-        <Canvas x:Name="SushiLayers" Grid.Row="1" >
-            <Label Content="Label" Canvas.Left="379" Canvas.Top="153" HorizontalAlignment="Left" VerticalAlignment="Center" Width="277" x:Name="usun"/>
-        </Canvas>
+        <Grid x:Name="SushiLayers" Grid.Row="2">
+            <Label x:Name="usun"
+           Content="Label"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Center"
+           Width="277"/>
+        </Grid>
 
 
-        <Border Grid.Row="3"  >
+        <Border Grid.Row="3">
 
             <Grid Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="529*"/>
+                    <ColumnDefinition Width="431*"/>
+                </Grid.ColumnDefinitions>
 
                 <!-- PANEL WYBORU TYPU SUSHI -->
-                <UniformGrid x:Name="SushiTypePanel" Columns="4">
+                <UniformGrid x:Name="SushiTypePanel" Columns="4" Grid.ColumnSpan="2">
                     <Button Style="{StaticResource SushiButtonStyle}" Click="Onigiri_Click">
                         <StackPanel>
                             <TextBlock Text="🍙" FontSize="40" HorizontalAlignment="Center"/>
@@ -84,7 +92,7 @@
                             <TextBlock Text="HOSOMAKI" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Button>
-   
+
                     <Button Style="{StaticResource SushiButtonStyle}" Click="Futomaki_Click">
                         <StackPanel>
                             <TextBlock Text="🍱" FontSize="40" HorizontalAlignment="Center"/>
@@ -94,7 +102,7 @@
                 </UniformGrid>
 
                 <!-- PANEL SKŁADNIKÓW (ukryty) -->
-                <UniformGrid x:Name="IngredientsPanel" Columns="5" Visibility="Collapsed">
+                <UniformGrid x:Name="IngredientsPanel" Columns="5" Visibility="Collapsed" Grid.ColumnSpan="2">
 
                     <Button x:Name="RiceButton" Style="{StaticResource SushiButtonStyle}" Click="AddRice_Click ">
                         <StackPanel>
