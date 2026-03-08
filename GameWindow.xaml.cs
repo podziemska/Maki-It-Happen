@@ -33,6 +33,7 @@ namespace Maki_it_happen;
 
         IloscRyzu--;
         RiceCountLabel.Text = $"Szt: {IloscRyzu}";
+        
         Image riceImage = new Image();
         riceImage.Source = new BitmapImage(
         new Uri("pack://application:,,,/images/RyzG.png"));
@@ -57,8 +58,15 @@ namespace Maki_it_happen;
             {
                 FishCountLabel.Text = "Łosoś się skończył! Idz do sklepu!";
             }
-            // TODO: Dodaj grafikę ryby na talerz
-        }
+
+        Image fishImage = new Image();
+        fishImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/LososG.png", UriKind.Absolute));
+
+        fishImage.Stretch = Stretch.Fill;
+        Grid.SetRowSpan(fishImage, 4);
+        MainGrid.Children.Add(fishImage);
+        Panel.SetZIndex(fishImage, -1);
+    }
 
         private void AddCucumber_Click(object sender, RoutedEventArgs e)
         {
@@ -73,8 +81,15 @@ namespace Maki_it_happen;
             {
                 CucumberCountLabel.Text = "Ogórek się skończył! Idz do sklepu!";
             }
-            // TODO: Dodaj grafikę ogórka na talerz
-        }
+
+        Image cucumberImage = new Image();
+        cucumberImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/OgorekG.png", UriKind.Absolute));
+
+        cucumberImage.Stretch = Stretch.Fill;
+        Grid.SetRowSpan(cucumberImage, 4);
+        MainGrid.Children.Add(cucumberImage);
+        Panel.SetZIndex(cucumberImage, -1);
+    }
 
         private void AddNori_Click(object sender, RoutedEventArgs e)
         {
@@ -88,8 +103,15 @@ namespace Maki_it_happen;
             {
                 NoriCountLabel.Text = "Nori się skończyło! Idz do sklepu!";
             }
-            // TODO: Dodaj grafikę nori na talerz
-        }
+
+        Image noriImage = new Image();
+        noriImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/NoriG.png", UriKind.Absolute));
+
+        noriImage.Stretch = Stretch.Fill;
+        Grid.SetRowSpan(noriImage, 4);
+        MainGrid.Children.Add(noriImage);
+        Panel.SetZIndex(noriImage, -1);
+    }
 
         private void Serve_Click(object sender, RoutedEventArgs e)
         {
