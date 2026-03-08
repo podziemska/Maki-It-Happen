@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+	<PropertyGroup>
+		<AssemblyName>Maki_it_happen</AssemblyName>
+	</PropertyGroup>
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -16,12 +18,17 @@
     <None Remove="ogorek.png" />
     <None Remove="ryz.png" />
     <None Remove="RyzG.png" />
+	<None Remove="LososG.png" />
     <None Remove="sala_glowna.png" />
   </ItemGroup>
 
   <ItemGroup>
 	  <Resource Include="images\GameWindow.jpg" />
 	  <Resource Include="images\RyzG.png" />
+	  <Resource Include="images\LososG.png" />
+	  <Resource Include="images\NoriG.png" />
+	  <Resource Include="images\OgorekG.png" />
+
 	  <Resource Include="sala_glowna.png" />
   </ItemGroup>
 
