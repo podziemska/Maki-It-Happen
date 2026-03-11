@@ -28,17 +28,51 @@ namespace Maki_it_happen
         {
             GameWindow okno = new GameWindow();
 
-            // Ustawienie startu na œrodku ekranu
+            // Ustawienie startu na Å›rodku ekranu
             okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             okno.Show();
-            this.Close(); // Zamyka obecne okno (np. Salê G³ówn¹)
+            this.Close(); // Zamyka obecne okno (np. SalÄ™ GÅ‚Ã³wnÄ…)
         }
         private void OpenShop_Click(object sender, RoutedEventArgs e)
         {
             // Tworzymy i otwieramy nowe okno sklepu
             //ShopWindow oknoSklepu = new ShopWindow();
-            //oknoSklepu.ShowDialog(); // ShowDialog blokuje kuchniê, póki nie zamkniesz sklepu
+            //oknoSklepu.ShowDialog(); // ShowDialog blokuje kuchniÄ™, pÃ³ki nie zamkniesz sklepu
         }
+        private static Random rng = new Random();
+
+private Zamowienie GenerujLosoweZamowienie()
+{
+    List<Product> produkty = new List<Product>()
+    {
+        new Sushi("California", 22, 1),
+        new Sushi("Philadelphia", 24, 2),
+        new Sushi("Ebi", 26, 3),
+        new Drink("Cola", 8, 4),
+        new Drink("Sprite", 8, 5),
+        new Drink("Herbata", 6, 6)
+    };
+
+    int ile = rng.Next(1, 5);
+    List<Product> wybrane = new List<Product>();
+
+    for (int i = 0; i < ile; i++)
+    {
+        var p = produkty[rng.Next(produkty.Count)];
+
+        // ZMIEN
+        wybrane.Add(new Product(p.Nazwa, p.Cena, p.Id));
+    }
+
+    return new Zamowienie()
+    
+    {
+        //  zmien
+        Produkty = wybrane
+    };
+}
+
+
     }
 }
