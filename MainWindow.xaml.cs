@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,16 +22,15 @@ namespace Maki_it_happen
         }
         private void Graj_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Tworzymy instancję nowego okna z kuchnią
-            GameWindow oknoGry = new GameWindow();
+            SalaGlowna okno = new SalaGlowna();
 
-            // 2. Pokazujemy nowe okno
-            oknoGry.Show();
+            // Ustawienie okna na �rodku ekranu przed jego pokazaniem
+            okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            // 3. Zamykamy obecne menu, żeby nie wisiało w tle
+            okno.Show();
+
+            // Zamykamy obecne okno (np. Menu G��wne)
             this.Close();
-
-            //I cyk pyk jesteśmy w kuchni!
         }
 
         private void Wyjdz_Click(object sender, RoutedEventArgs e)
