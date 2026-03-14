@@ -19,11 +19,12 @@ namespace Maki_it_happen
         public MainWindow()
         {
             InitializeComponent();
+            
         }
         private void Graj_Click(object sender, RoutedEventArgs e)
         {
             SalaGlowna okno = new SalaGlowna();
-
+           
             // Ustawienie okna na œrodku ekranu przed jego pokazaniem
             okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 

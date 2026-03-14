@@ -4,21 +4,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Maki_it_happen;
-
-    public partial class GameWindow : Window
+public static class GameState
+{
+    // Wartość początkowa ustawiana tylko raz przy starcie aplikacji
+    public static int Kasa { get; set; } = 1000;
+}
+public partial class GameWindow : Window
     {
         public int IloscRyzu = 10;
         public int IloscRyby = 5;
         public int IloscOgorka = 8;
         public int IloscNori = 12;
-        public int Kasa = 100; // Przykładowa ilość pieniędzy, którą gracz ma na start
+ 
+        public int Kasa = 0;
 
-
-        public GameWindow()
+    public GameWindow()
         {
             InitializeComponent();
+        
             
-        }
+            KasaLabel.Text = $"Kasa: {Kasa}$$";
+    }
 
         private void AddRice_Click(object sender, RoutedEventArgs e)
         {
@@ -187,7 +193,7 @@ namespace Maki_it_happen;
         private void OpenSala_Click(object sender, RoutedEventArgs e)
         {
         SalaGlowna oknoSala = new SalaGlowna();
-
+        
         //liczenie renczne czy cos
         oknoSala.WindowStartupLocation = WindowStartupLocation.Manual;
 
