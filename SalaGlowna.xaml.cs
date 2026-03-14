@@ -19,7 +19,7 @@ namespace Maki_it_happen
     /// </summary>
     public partial class SalaGlowna : Window
     {
-       
+
         public SalaGlowna()
         {
             InitializeComponent();
@@ -42,37 +42,43 @@ namespace Maki_it_happen
         }
         private static Random rng = new Random();
 
+    }
+}
+/*
+ sorry za komentarz, ale to narazie nie działa, a porzebuje tego do testów
+
 private Zamowienie GenerujLosoweZamowienie()
 {
-    List<Product> produkty = new List<Product>()
-    {
-        new Sushi("California", 22, 1),
-        new Sushi("Philadelphia", 24, 2),
-        new Sushi("Ebi", 26, 3),
-        new Drink("Cola", 8, 4),
-        new Drink("Sprite", 8, 5),
-        new Drink("Herbata", 6, 6)
-    };
+List<Product> produkty = new List<Product>()
+{
+new Sushi("California", 22, 1),
+new Sushi("Philadelphia", 24, 2),
+new Sushi("Ebi", 26, 3),
+new Drink("Cola", 8, 4),
+new Drink("Sprite", 8, 5),
+new Drink("Herbata", 6, 6)
+};
 
-    int ile = rng.Next(1, 5);
-    List<Product> wybrane = new List<Product>();
+int ile = rng.Next(1, 5);
+List<Product> wybrane = new List<Product>();
 
-    for (int i = 0; i < ile; i++)
-    {
-        var p = produkty[rng.Next(produkty.Count)];
+for (int i = 0; i < ile; i++)
+{
+var p = produkty[rng.Next(produkty.Count)];
 
-        // ZMIEN
-        wybrane.Add(new Product(p.Nazwa, p.Cena, p.Id));
-    }
+// ZMIEN
+wybrane.Add(new Product(p.Nazwa, p.Cena, p.Id));
+}
 
-    return new Zamowienie()
-    
-    {
-        //  zmien
-        Produkty = wybrane
-    };
+return new Zamowienie()
+
+{
+//  zmien
+Produkty = wybrane
+};
 }
 
 
-    }
 }
+}
+*/

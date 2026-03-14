@@ -31,27 +31,32 @@
         <ImageBrush ImageSource="/images/GameWindow.jpg"/>
     </Window.Background>
 
-    <Grid x:Name="MainGrid">
+    <Grid x:Name="MainGrid" Margin="0,3,0,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="100"/>
             <RowDefinition/>
             <RowDefinition Height="126.04"/>
             <RowDefinition Height="130"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" >
-            <Grid>
-                <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                    <Label Content="tu będo zamówienia sie pokazywały"/>
-                </ScrollViewer>
 
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="30,0">
-                    <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#F1C40F" FontSize="26" FontWeight="Bold"/>
-                    <Button Content="SKLEP 🛒" Background="#9B59B6" Foreground="White" Padding="10,5" Margin="0,5,0,0" Click="OpenShop_Click"/>
-                    <Button Content="SALA GŁÓWNA" Background="#9B59B6" Foreground="White" Padding="10,5" Margin="0,5,0,0" Click="OpenSala_Click"/>
-                </StackPanel>
-            </Grid>
-        </Border>
+        
+        <Button Content="SALA GŁÓWNA" Background="#9B59B6" Foreground="White" Padding="10,5" Click="OpenSala_Click" Height="48" Width="129" Margin="436,10,436,42" />
+
+        <Button Content="SKLEP 🛒" Background="#9B59B6" Foreground="White" Padding="10,5" Click="OpenShop_Click" Height="48" Width="129" Margin="10,10,861,42"/>
+
+
+
+
+
+
+        <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#F1C40F" FontSize="36" FontWeight="Bold" Margin="761,10,-2,0"/>
+        
+
+
+
+
+
 
         <Grid x:Name="SushiLayers" Grid.Row="2">
             <Label x:Name="usun"
