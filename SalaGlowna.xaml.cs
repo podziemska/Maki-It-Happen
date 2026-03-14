@@ -19,11 +19,11 @@ namespace Maki_it_happen
     /// </summary>
     public partial class SalaGlowna : Window
     {
-        public int Kasa = (Application.Current?.Windows.OfType<GameWindow>().FirstOrDefault())?.Kasa ?? 100;
+        public int Kasa = GameState.Kasa;
         public SalaGlowna()
         {
             InitializeComponent();
-            KasaLabel.Text = $"Kasa:{Kasa}$$";
+            KasaLabel.Text = $"Kasa:{GameState.Kasa}$$";
         }
         private void Kuchnia(object sender, RoutedEventArgs e)
         {

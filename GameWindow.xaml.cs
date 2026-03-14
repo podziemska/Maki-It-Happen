@@ -7,7 +7,7 @@ namespace Maki_it_happen;
 public static class GameState
 {
     // Wartość początkowa ustawiana tylko raz przy starcie aplikacji
-    public static int Kasa { get; set; } = 1000;
+    public static int Kasa { get; set; } = 100;
 }
 public partial class GameWindow : Window
     {
@@ -16,14 +16,14 @@ public partial class GameWindow : Window
         public int IloscOgorka = 8;
         public int IloscNori = 12;
  
-        public int Kasa = 0;
+        public int Kasa = GameState.Kasa;
 
     public GameWindow()
         {
             InitializeComponent();
         
             
-            KasaLabel.Text = $"Kasa: {Kasa}$$";
+            KasaLabel.Text = $"Kasa: {GameState.Kasa}$$";
     }
 
         private void AddRice_Click(object sender, RoutedEventArgs e)

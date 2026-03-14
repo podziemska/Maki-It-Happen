@@ -74,6 +74,7 @@ namespace Maki_it_happen
         private void BackToKitchen_Click(object sender, RoutedEventArgs e)
         {
             this.Close(); // Zamyka tylko sklep i wraca do otwartej kuchni
+            GameState.Kasa = _GW.Kasa; // Aktualizuje globalną kasę
         }
     }
 }
