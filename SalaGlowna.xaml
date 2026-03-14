@@ -19,7 +19,7 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="576,0,0,0" Height="68" Width="146">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="799,10,0,0" Height="68" Width="146">
             <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#62B5B5" FontSize="24" FontWeight="Bold" Height="42" Width="147"/>
 
         </StackPanel>
@@ -30,8 +30,8 @@
             Click="Kuchnia"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Background="LightGray"
-            Margin="0,70,11,0" Height="20" Width="55"/>
+            Background="#FF9CCA27"
+            Margin="0,50,11,0" Height="40" Width="117"/>
 
         <Button 
             Grid.Row="2"

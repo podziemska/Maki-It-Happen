@@ -107,13 +107,13 @@
                 </UniformGrid>
 
                 <!-- PANEL SKŁADNIKÓW (ukryty) -->
-                <UniformGrid x:Name="IngredientsPanel" Columns="5" Visibility="Collapsed" Grid.ColumnSpan="2">
+                <UniformGrid x:Name="IngredientsPanel" Columns="5" Visibility="Collapsed" Grid.ColumnSpan="2" Cursor="">
 
                     <Button x:Name="RiceButton" Style="{StaticResource SushiButtonStyle}" Click="AddRice_Click ">
                         <StackPanel>
                             <TextBlock Text="🍚" FontSize="30" HorizontalAlignment="Center"/>
                             <TextBlock Text="RYŻ" HorizontalAlignment="Center"/>
-                            <TextBlock x:Name="RiceCountLabel" Text="Szt: 0" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="RiceCountLabel" Text="Szt: 10" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Button>
 
