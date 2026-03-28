@@ -11,13 +11,28 @@ public static class GameState
 }
 public partial class GameWindow : Window
     {
+    //BLANKA SĄ NA FALSE JC!!!!!!!!!!!!
+    private bool czyDodanoRyz = false;
+    private bool czyDodanoNori = false;
+    private bool czyDodanoOgorek = false;
+    private bool czyDodanoLosos = false;
+    
         public int IloscRyzu = 10;
         public int IloscRyby = 5;
         public int IloscOgorka = 8;
         public int IloscNori = 12;
  
         public int Kasa = GameState.Kasa;
-
+    public enum EtapSushi
+    {
+        Start,
+        Nori,
+        Ryz,
+        Ogorek,
+        Losos,
+        Gotowe
+    }
+    private EtapSushi aktualnyEtap = EtapSushi.Start;
     public GameWindow()
         {
             InitializeComponent();
@@ -26,9 +41,23 @@ public partial class GameWindow : Window
             KasaLabel.Text = $"Kasa: {GameState.Kasa}$$";
     }
 
-        private void AddRice_Click(object sender, RoutedEventArgs e)
+    private void AddRice_Click(object sender, RoutedEventArgs e)
+    {
+        if (czyDodanoRyz)
         {
-            usun.Content = "ryż";
+            MessageBox.Show("Już dodałaś ryż!");
+            return;
+        }
+        if (aktualnyEtap != EtapSushi.Start && aktualnyEtap != EtapSushi.Nori)
+        {
+            MessageBox.Show("Nie możesz teraz dodać ryżu!");
+            return;
+        }
+        czyDodanoRyz = true;
+
+        aktualnyEtap = EtapSushi.Ryz;
+
+        usun.Content = "ryż";
 
 
         if (IloscRyzu <= 0)
@@ -51,9 +80,23 @@ public partial class GameWindow : Window
 
     }
 
-        private void AddFish_Click(object sender, RoutedEventArgs e)
+    private void AddFish_Click(object sender, RoutedEventArgs e)
+    {
+        if (czyDodanoLosos)
         {
-            usun.Content = "ryba";
+            MessageBox.Show("Już dodałaś łososia!");
+            return;
+        }
+        if (aktualnyEtap != EtapSushi.Ryz && aktualnyEtap != EtapSushi.Ogorek)
+        {
+            MessageBox.Show("Najpierw dodaj ryż!");
+            return;
+        }
+
+        aktualnyEtap = EtapSushi.Losos;
+        czyDodanoLosos = true;
+
+        usun.Content = "ryba";
           
             if (IloscRyby >= 1)
             {
@@ -74,9 +117,23 @@ public partial class GameWindow : Window
         Panel.SetZIndex(fishImage, -1);
     }
 
-        private void AddCucumber_Click(object sender, RoutedEventArgs e)
+    private void AddCucumber_Click(object sender, RoutedEventArgs e)
+    {
+        if (czyDodanoOgorek)
         {
-            usun.Content = "ogórek";
+            MessageBox.Show("Już dodałaś ogórek!");
+            return;
+        }
+
+        if (aktualnyEtap != EtapSushi.Ryz)
+        {
+            MessageBox.Show("Najpierw dodaj ryż!");
+            return;
+        }
+
+        aktualnyEtap = EtapSushi.Ogorek;
+        czyDodanoOgorek = true;
+        usun.Content = "ogórek";
           
             if (IloscOgorka >= 1)
             {
@@ -97,9 +154,25 @@ public partial class GameWindow : Window
         Panel.SetZIndex(cucumberImage, -1);
     }
 
-        private void AddNori_Click(object sender, RoutedEventArgs e)
+    private void AddNori_Click(object sender, RoutedEventArgs e)
+    {
+        if (czyDodanoNori)
         {
-            usun.Content = "nori";
+            MessageBox.Show("Już dodałaś nori!");
+            return;
+        }
+
+        if (aktualnyEtap != EtapSushi.Start)
+        {
+            MessageBox.Show("Najpierw musisz zacząć od nori!");
+            return;
+        }
+
+
+        aktualnyEtap = EtapSushi.Nori;
+        czyDodanoNori = true;
+
+        usun.Content = "nori";
             if (IloscNori >= 1)
             {
                 IloscNori--;
@@ -118,8 +191,7 @@ public partial class GameWindow : Window
         MainGrid.Children.Add(noriImage);
         Panel.SetZIndex(noriImage, -1);
     }
-
-        private void Serve_Click(object sender, RoutedEventArgs e)
+    private void Serve_Click(object sender, RoutedEventArgs e)
         {
             usun.Content = "serwuj";
             // TODO: Sprawdź czy składniki na talerzu pasują do zamówienia
@@ -206,6 +278,20 @@ public partial class GameWindow : Window
 
         oknoSala.Show();
         this.Hide();
+    }
+
+    private void Cancel_Click(object sender, RoutedEventArgs e) // nie dziala!
+    {
+        MainGrid.Children.RemoveRange(0, MainGrid.Children.Count);
+
+        czyDodanoRyz = false;
+        czyDodanoNori = false;
+        czyDodanoOgorek = false;
+        czyDodanoLosos = false;
+
+        aktualnyEtap = EtapSushi.Start;
+
+        usun.Content = "anulowano";
     }
 }
 
