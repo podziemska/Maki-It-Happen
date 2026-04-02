@@ -291,17 +291,30 @@ public partial class GameWindow : Window
         this.Hide();
     }
 
-    private void Cancel_Click(object sender, RoutedEventArgs e) // nie dziala!
+    private void Cancel_Click(object sender, RoutedEventArgs e)
+{
+    // Zamiast usuwać wszystko z MainGrid, usuwamy tylko dodane obrazki
+    
+
+    var doUsuniecia = new System.Collections.Generic.List<UIElement>();
+    foreach (UIElement child in MainGrid.Children)
     {
-        MainGrid.Children.RemoveRange(0, MainGrid.Children.Count);
-
-        czyDodanoRyz = false;
-        czyDodanoNori = false;
-        czyDodanoOgorek = false;
-        czyDodanoLosos = false;
-
-        aktualnyEtap = EtapSushi.Start;
-
-        usun.Content = "anulowano";
+        if (child is Image) doUsuniecia.Add(child);
     }
+
+    foreach (var img in doUsuniecia)
+    {
+        MainGrid.Children.Remove(img);
+    }
+
+    czyDodanoRyz = false;
+    czyDodanoNori = false;
+    czyDodanoOgorek = false;
+    czyDodanoLosos = false;
+    aktualnyEtap = EtapSushi.Start;
+    usun.Content = "anulowano";
+
+    SushiTypePanel.Visibility = Visibility.Visible;
+    IngredientsPanel.Visibility = Visibility.Collapsed;
+}
 }
