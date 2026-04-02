@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <None Remove="ikonki jedzenia.png" />
+    <None Remove="images\klient.png" />
     <None Remove="lososNowy.png" />
     <None Remove="Nori.png" />
     <None Remove="ogorek.png" />
@@ -24,6 +25,7 @@
 
   <ItemGroup>
 	  <Resource Include="images\GameWindow.jpg" />
+	  <Resource Include="images\klient.png" />
 	  <Resource Include="images\RyzG.png" />
 	  <Resource Include="images\LososG.png" />
 	  <Resource Include="images\NoriG.png" />

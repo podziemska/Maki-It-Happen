@@ -4,77 +4,81 @@ namespace Maki_it_happen
 {
     public partial class ShopWindow : Window
     {
-
-
         private GameWindow _GW;
-       
 
-        // Jeden wspólny konstruktor
+        // Konstruktor przyjmuje GameWindow, żeby móc wywołać odświeżenie interfejsu
         public ShopWindow(GameWindow gameWindow)
         {
             InitializeComponent();
             _GW = gameWindow;
-            
         }
 
         private void BuyRice_Click(object sender, RoutedEventArgs e)
         {
-            if (_GW.Kasa >= 20)
+            if (GameState.Kasa >= 20)
             {
-                _GW.Kasa -= 20;
-                _GW.IloscRyzu += 10;
-                    _GW.RiceCountLabel.Text = $"Szt: {_GW.IloscRyzu}";
-                _GW.KasaLabel.Text = $"Kasa: {_GW.Kasa}";
-                
-                var sala = Application.Current.Windows.OfType<SalaGlowna>().FirstOrDefault();
-
-                if (sala != null)
-                {
-                    sala.KasaLabel.Text = $"Kasa: {_GW.Kasa}";
-                }
-
-
+                GameState.Kasa -= 20;
+                GameState.IloscRyzu += 10;
+                AktualizujWidok();
             }
             else
             {
-                { MessageBox.Show("Nie masz wystarczająco pieniędzy!"); }
+                MessageBox.Show("Nie masz wystarczająco pieniędzy!");
             }
         }
 
         private void BuyFish_Click(object sender, RoutedEventArgs e)
         {
-            if (_GW.Kasa >= 50)
+            if (GameState.Kasa >= 50)
             {
-                _GW.Kasa -= 50;
-                _GW.IloscRyby += 5;
-                _GW.FishCountLabel.Text = $"Szt: {_GW.IloscRyby}";
-                _GW.KasaLabel.Text = $"Kasa: {_GW.Kasa}";
+                GameState.Kasa -= 50;
+                GameState.IloscRyby += 5;
+                AktualizujWidok();
             }
             else
             {
-                { MessageBox.Show("Nie masz wystarczająco pieniędzy!"); }
+                MessageBox.Show("Nie masz wystarczająco pieniędzy!");
             }
         }
 
         private void BuyNori_Click(object sender, RoutedEventArgs e)
         {
-            if (_GW.Kasa >= 15)
+            if (GameState.Kasa >= 15)
             {
-                _GW.Kasa -= 15;
-                _GW.IloscNori += 20;
-                _GW.NoriCountLabel.Text = $"Szt: {_GW.IloscNori}";
-                _GW.KasaLabel.Text = $"Kasa: {_GW.Kasa}";
+                GameState.Kasa -= 15;
+                GameState.IloscNori += 20;
+                AktualizujWidok();
             }
             else
             {
-                { MessageBox.Show("Nie masz wystarczająco pieniędzy!"); }
+                MessageBox.Show("Nie masz wystarczająco pieniędzy!");
             }
+        }
+
+        private void BuyCucumber_Click(object sender, RoutedEventArgs e)
+        {
+            if (GameState.Kasa >= 10)
+            {
+                GameState.Kasa -= 10;
+                GameState.IloscOgorka += 8;
+                AktualizujWidok();
+            }
+            else
+            {
+                MessageBox.Show("Nie masz wystarczająco pieniędzy!");
+            }
+        }
+
+        // Metoda pomocnicza, która odświeża napisy w oknie kuchni
+        private void AktualizujWidok()
+        {
+            // Wywołujemy publiczną metodę z GameWindow, którą przygotowaliśmy wcześniej
+            _GW.AktualizujInterfejs();
         }
 
         private void BackToKitchen_Click(object sender, RoutedEventArgs e)
         {
-            this.Close(); // Zamyka tylko sklep i wraca do otwartej kuchni
-            GameState.Kasa = _GW.Kasa; // Aktualizuje globalną kasę
+            this.Close();
         }
     }
 }
