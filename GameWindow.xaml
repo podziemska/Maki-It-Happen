@@ -1,7 +1,8 @@
 <Window x:Class="Maki_it_happen.GameWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Kuchnia - Maki it happen" Height="750" Width="1000">
+        Title="Kuchnia - Maki it happen" Height="750" Width="1000"
+        WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Style x:Key="SushiButtonStyle" TargetType="Button">
@@ -31,73 +32,46 @@
         <ImageBrush ImageSource="/images/GameWindow.jpg"/>
     </Window.Background>
 
-    <Grid x:Name="MainGrid" Margin="0,3,0,0">
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition/>
-            <RowDefinition Height="126.04"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="130"/>
             <RowDefinition Height="130"/>
         </Grid.RowDefinitions>
 
+        <DockPanel Grid.Row="0" Margin="10">
+            <Button Content="SKLEP 🛒" Background="#9B59B6" Foreground="White" Width="120" Height="45" Click="OpenShop_Click" DockPanel.Dock="Left"/>
+            <Button Content="SALA GŁÓWNA" Background="#9B59B6" Foreground="White" Width="130" Height="45" Click="OpenSala_Click" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#F1C40F" FontSize="36" FontWeight="Bold" DockPanel.Dock="Right" VerticalAlignment="Center" TextAlignment="Right"/>
+        </DockPanel>
 
-        
-        <Button Content="SALA GŁÓWNA" Background="#9B59B6" Foreground="White" Padding="10,5" Click="OpenSala_Click" Height="48" Width="129" Margin="436,10,436,42" />
-
-        <Button Content="SKLEP 🛒" Background="#9B59B6" Foreground="White" Padding="10,5" Click="OpenShop_Click" Height="48" Width="129" Margin="10,10,861,42"/>
-
-
-
-
-
-
-        <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#F1C40F" FontSize="36" FontWeight="Bold" Margin="761,10,-2,0"/>
-        
-
-
-
-
-
-
-        <Grid x:Name="SushiLayers" Grid.Row="2">
-            <Label x:Name="usun"
-           Content="Label"
-           HorizontalAlignment="Left"
-           VerticalAlignment="Center"
-           Width="277"/>
+        <Grid x:Name="SushiLayers" Grid.Row="1" Grid.RowSpan="2">
         </Grid>
 
+        <Label x:Name="usun" Content="Gotowy?" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Foreground="White" Background="#80000000" Margin="10"/>
 
-        <Border Grid.Row="3">
-
-            <Grid Margin="20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="529*"/>
-                    <ColumnDefinition Width="431*"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- PANEL WYBORU TYPU SUSHI -->
-                <UniformGrid x:Name="SushiTypePanel" Columns="4" Grid.ColumnSpan="2">
+        <Border Grid.Row="3" Background="#AA000000" CornerRadius="15,15,0,0">
+            <Grid Margin="10">
+                <UniformGrid x:Name="SushiTypePanel" Columns="4" Visibility="Visible">
                     <Button Style="{StaticResource SushiButtonStyle}" Click="Onigiri_Click">
                         <StackPanel>
                             <TextBlock Text="🍙" FontSize="40" HorizontalAlignment="Center"/>
                             <TextBlock Text="ONIGIRI" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Button>
-
                     <Button Style="{StaticResource SushiButtonStyle}" Click="Nigiri_Click">
                         <StackPanel>
                             <TextBlock Text="🍣" FontSize="40" HorizontalAlignment="Center"/>
                             <TextBlock Text="NIGIRI" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Button>
-
-                    <Button Style="{StaticResource SushiButtonStyle}" Click="Hosomaki_Click" Cursor="Hand">
+                    <Button Style="{StaticResource SushiButtonStyle}" Click="Hosomaki_Click">
                         <StackPanel>
                             <TextBlock Text="🥢" FontSize="40" HorizontalAlignment="Center"/>
                             <TextBlock Text="HOSOMAKI" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Button>
-
                     <Button Style="{StaticResource SushiButtonStyle}" Click="Futomaki_Click">
                         <StackPanel>
                             <TextBlock Text="🍱" FontSize="40" HorizontalAlignment="Center"/>
@@ -106,12 +80,10 @@
                     </Button>
                 </UniformGrid>
 
-                <!-- PANEL SKŁADNIKÓW (ukryty) -->
-                <UniformGrid x:Name="IngredientsPanel" Columns="5" Visibility="Collapsed" Grid.ColumnSpan="2" Cursor="">
-
-                    <Button x:Name="RiceButton" Style="{StaticResource SushiButtonStyle}" Click="AddRice_Click ">
+                <UniformGrid x:Name="IngredientsPanel" Columns="6" Visibility="Collapsed">
+                    <Button x:Name="RiceButton" Style="{StaticResource SushiButtonStyle}" Click="AddRice_Click">
                         <StackPanel>
-                            <TextBlock Text="🍚" FontSize="30" HorizontalAlignment="Center"/>
+                            <TextBlock Text="🍚" FontSize="25" HorizontalAlignment="Center"/>
                             <TextBlock Text="RYŻ" HorizontalAlignment="Center"/>
                             <TextBlock x:Name="RiceCountLabel" Text="Szt: 10" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
                         </StackPanel>
@@ -119,7 +91,7 @@
 
                     <Button x:Name="FishButton" Style="{StaticResource SushiButtonStyle}" Click="AddFish_Click">
                         <StackPanel>
-                            <TextBlock Text="🐟" FontSize="30" HorizontalAlignment="Center"/>
+                            <TextBlock Text="🐟" FontSize="25" HorizontalAlignment="Center"/>
                             <TextBlock Text="ŁOSOŚ" HorizontalAlignment="Center"/>
                             <TextBlock x:Name="FishCountLabel" Text="Szt: 5" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
                         </StackPanel>
@@ -127,7 +99,7 @@
 
                     <Button x:Name="CucumberButton" Style="{StaticResource SushiButtonStyle}" Click="AddCucumber_Click">
                         <StackPanel>
-                            <TextBlock Text="🥒" FontSize="30" HorizontalAlignment="Center"/>
+                            <TextBlock Text="🥒" FontSize="25" HorizontalAlignment="Center"/>
                             <TextBlock Text="OGÓREK" HorizontalAlignment="Center"/>
                             <TextBlock x:Name="CucumberCountLabel" Text="Szt: 8" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
                         </StackPanel>
@@ -135,23 +107,27 @@
 
                     <Button x:Name="NoriButton" Style="{StaticResource SushiButtonStyle}" Click="AddNori_Click">
                         <StackPanel>
-                            <TextBlock Text="⬛" FontSize="30" HorizontalAlignment="Center"/>
+                            <TextBlock Text="⬛" FontSize="25" HorizontalAlignment="Center"/>
                             <TextBlock Text="NORI" HorizontalAlignment="Center"/>
                             <TextBlock x:Name="NoriCountLabel" Text="Szt: 12" FontSize="10" Foreground="#F1C40F" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Button>
 
-                    <Button Background="#2ECC71" Click="Serve_Click">
+                    <Button Background="#E67E22" Click="Cancel_Click" Margin="5">
                         <StackPanel>
-                            <TextBlock Text="✅" FontSize="30" HorizontalAlignment="Center"/>
-                            <TextBlock Text="SERWUJ!" FontWeight="Bold"/>
+                            <TextBlock Text="❌" FontSize="25" HorizontalAlignment="Center"/>
+                            <TextBlock Text="ANULUJ" FontWeight="Bold" Foreground="White"/>
                         </StackPanel>
                     </Button>
 
+                    <Button Background="#2ECC71" Click="Serve_Click" Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="✅" FontSize="25" HorizontalAlignment="Center"/>
+                            <TextBlock Text="SERWUJ!" FontWeight="Bold" Foreground="White"/>
+                        </StackPanel>
+                    </Button>
                 </UniformGrid>
-
             </Grid>
         </Border>
-
     </Grid>
 </Window>

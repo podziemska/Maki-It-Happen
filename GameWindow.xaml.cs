@@ -10,19 +10,20 @@ public static class GameState
     public static int Kasa { get; set; } = 100;
 }
 public partial class GameWindow : Window
-    {
+{
     //BLANKA SĄ NA FALSE JC!!!!!!!!!!!!
     private bool czyDodanoRyz = false;
     private bool czyDodanoNori = false;
     private bool czyDodanoOgorek = false;
     private bool czyDodanoLosos = false;
-    
-        public int IloscRyzu = 10;
-        public int IloscRyby = 5;
-        public int IloscOgorka = 8;
-        public int IloscNori = 12;
- 
-        public int Kasa = GameState.Kasa;
+
+    public int IloscRyzu = 10;
+    public int IloscRyby = 5;
+    public int IloscOgorka = 8;
+    public int IloscNori = 12;
+
+    public int Kasa = GameState.Kasa;
+
     public enum EtapSushi
     {
         Start,
@@ -34,17 +35,19 @@ public partial class GameWindow : Window
     }
     private EtapSushi aktualnyEtap = EtapSushi.Start;
     public GameWindow()
-        {
-            InitializeComponent();
-        
-            
-            KasaLabel.Text = $"Kasa: {GameState.Kasa}$$";
+    {
+        InitializeComponent();
+
+
+        KasaLabel.Text = $"Kasa: {GameState.Kasa}$$";
     }
 
+    
     private void AddRice_Click(object sender, RoutedEventArgs e)
     {
         if (czyDodanoRyz)
         {
+            usun.Content = "ryż";
             MessageBox.Show("Już dodałaś ryż!");
             return;
         }
@@ -68,7 +71,7 @@ public partial class GameWindow : Window
 
         IloscRyzu--;
         RiceCountLabel.Text = $"Szt: {IloscRyzu}";
-        
+
         Image riceImage = new Image();
         riceImage.Source = new BitmapImage(
         new Uri("pack://application:,,,/images/RyzG.png"));
@@ -80,6 +83,7 @@ public partial class GameWindow : Window
 
     }
 
+    
     private void AddFish_Click(object sender, RoutedEventArgs e)
     {
         if (czyDodanoLosos)
@@ -89,6 +93,7 @@ public partial class GameWindow : Window
         }
         if (aktualnyEtap != EtapSushi.Ryz && aktualnyEtap != EtapSushi.Ogorek)
         {
+            usun.Content = "ryba";
             MessageBox.Show("Najpierw dodaj ryż!");
             return;
         }
@@ -97,16 +102,16 @@ public partial class GameWindow : Window
         czyDodanoLosos = true;
 
         usun.Content = "ryba";
-          
-            if (IloscRyby >= 1)
-            {
-                IloscRyby--;
-                FishCountLabel.Text = $"Szt: {IloscRyby}";
-            }
-            else
-            {
-                FishCountLabel.Text = "Łosoś się skończył! Idz do sklepu!";
-            }
+
+        if (IloscRyby >= 1)
+        {
+            IloscRyby--;
+            FishCountLabel.Text = $"Szt: {IloscRyby}";
+        }
+        else
+        {
+            FishCountLabel.Text = "Łosoś się skończył! Idz do sklepu!";
+        }
 
         Image fishImage = new Image();
         fishImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/LososG.png", UriKind.Absolute));
@@ -117,6 +122,7 @@ public partial class GameWindow : Window
         Panel.SetZIndex(fishImage, -1);
     }
 
+   
     private void AddCucumber_Click(object sender, RoutedEventArgs e)
     {
         if (czyDodanoOgorek)
@@ -127,6 +133,7 @@ public partial class GameWindow : Window
 
         if (aktualnyEtap != EtapSushi.Ryz)
         {
+            usun.Content = "ogórek";
             MessageBox.Show("Najpierw dodaj ryż!");
             return;
         }
@@ -134,16 +141,16 @@ public partial class GameWindow : Window
         aktualnyEtap = EtapSushi.Ogorek;
         czyDodanoOgorek = true;
         usun.Content = "ogórek";
-          
-            if (IloscOgorka >= 1)
-            {
-                IloscOgorka--;
-                CucumberCountLabel.Text = $"Szt: {IloscOgorka}";
-            }
-            else
-            {
-                CucumberCountLabel.Text = "Ogórek się skończył! Idz do sklepu!";
-            }
+
+        if (IloscOgorka >= 1)
+        {
+            IloscOgorka--;
+            CucumberCountLabel.Text = $"Szt: {IloscOgorka}";
+        }
+        else
+        {
+            CucumberCountLabel.Text = "Ogórek się skończył! Idz do sklepu!";
+        }
 
         Image cucumberImage = new Image();
         cucumberImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/OgorekG.png", UriKind.Absolute));
@@ -154,10 +161,12 @@ public partial class GameWindow : Window
         Panel.SetZIndex(cucumberImage, -1);
     }
 
+    
     private void AddNori_Click(object sender, RoutedEventArgs e)
     {
         if (czyDodanoNori)
         {
+            usun.Content = "nori";
             MessageBox.Show("Już dodałaś nori!");
             return;
         }
@@ -173,15 +182,15 @@ public partial class GameWindow : Window
         czyDodanoNori = true;
 
         usun.Content = "nori";
-            if (IloscNori >= 1)
-            {
-                IloscNori--;
-                NoriCountLabel.Text = $"Szt: {IloscNori}";
-            }
-            else
-            {
-                NoriCountLabel.Text = "Nori się skończyło! Idz do sklepu!";
-            }
+        if (IloscNori >= 1)
+        {
+            IloscNori--;
+            NoriCountLabel.Text = $"Szt: {IloscNori}";
+        }
+        else
+        {
+            NoriCountLabel.Text = "Nori się skończyło! Idz do sklepu!";
+        }
 
         Image noriImage = new Image();
         noriImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/NoriG.png", UriKind.Absolute));
@@ -191,81 +200,83 @@ public partial class GameWindow : Window
         MainGrid.Children.Add(noriImage);
         Panel.SetZIndex(noriImage, -1);
     }
+
+    
     private void Serve_Click(object sender, RoutedEventArgs e)
+    {
+        usun.Content = "serwuj";
+        // TODO: Sprawdź czy składniki na talerzu pasują do zamówienia
+        // TODO: Jeśli tak -> dodaj kasę i wyczyść talerz
+    }
+
+    private void OpenShop_Click(object sender, RoutedEventArgs e)
+    {
+        // Tworzymy i otwieramy nowe okno sklepu
+        ShopWindow oknoSklepu = new ShopWindow(this);
+        oknoSklepu.ShowDialog(); // ShowDialog blokuje kuchnię, póki nie zamkniesz sklepu
+    }
+
+    private void ShowIngredients()
+    {
+        SushiTypePanel.Visibility = Visibility.Collapsed;
+        IngredientsPanel.Visibility = Visibility.Visible;
+
+
+        RiceButton.Visibility = Visibility.Visible;
+        FishButton.Visibility = Visibility.Visible;
+        CucumberButton.Visibility = Visibility.Visible;
+        NoriButton.Visibility = Visibility.Visible;
+
+
+        if (selectedSushiType == "Onigiri")
         {
-            usun.Content = "serwuj";
-            // TODO: Sprawdź czy składniki na talerzu pasują do zamówienia
-            // TODO: Jeśli tak -> dodaj kasę i wyczyść talerz
+
+            CucumberButton.Visibility = Visibility.Collapsed;
         }
 
-        private void OpenShop_Click(object sender, RoutedEventArgs e)
+        if (selectedSushiType == "Nigiri")
         {
-            // Tworzymy i otwieramy nowe okno sklepu
-            ShopWindow oknoSklepu = new ShopWindow(this);
-            oknoSklepu.ShowDialog(); // ShowDialog blokuje kuchnię, póki nie zamkniesz sklepu
+            CucumberButton.Visibility = Visibility.Collapsed;
+            NoriButton.Visibility = Visibility.Collapsed;
         }
 
-        private void ShowIngredients()
+        if (selectedSushiType == "Hosomaki")
         {
-            SushiTypePanel.Visibility = Visibility.Collapsed;
-            IngredientsPanel.Visibility = Visibility.Visible;
-
-            
-            RiceButton.Visibility = Visibility.Visible;
-            FishButton.Visibility = Visibility.Visible;
-            CucumberButton.Visibility = Visibility.Visible;
-            NoriButton.Visibility = Visibility.Visible;
-
-            
-            if (selectedSushiType == "Onigiri")
-            {
-               
-                CucumberButton.Visibility = Visibility.Collapsed;
-            }
-
-            if (selectedSushiType == "Nigiri")
-            {
-                CucumberButton.Visibility = Visibility.Collapsed;
-                NoriButton.Visibility = Visibility.Collapsed;
-            }
-
-            if (selectedSushiType == "Hosomaki")
-            {
-                CucumberButton.Visibility = Visibility.Collapsed;
-            }
-
-            
-        }
-        private string selectedSushiType = "";
-
-        private void Onigiri_Click(object sender, RoutedEventArgs e)
-        {
-            selectedSushiType = "Onigiri";
-            ShowIngredients();
+            CucumberButton.Visibility = Visibility.Collapsed;
         }
 
-        private void Nigiri_Click(object sender, RoutedEventArgs e)
-        {
-            selectedSushiType = "Nigiri";
-            ShowIngredients();
-        }
 
-        private void Hosomaki_Click(object sender, RoutedEventArgs e)
-        {
-            selectedSushiType = "Hosomaki";
-            ShowIngredients();
-        }
+    }
+    private string selectedSushiType = "";
 
-        private void Futomaki_Click(object sender, RoutedEventArgs e)
-        {
-            selectedSushiType = "Futomaki";
-            ShowIngredients();
-        }
+    private void Onigiri_Click(object sender, RoutedEventArgs e)
+    {
+        selectedSushiType = "Onigiri";
+        ShowIngredients();
+    }
 
-        private void OpenSala_Click(object sender, RoutedEventArgs e)
-        {
+    private void Nigiri_Click(object sender, RoutedEventArgs e)
+    {
+        selectedSushiType = "Nigiri";
+        ShowIngredients();
+    }
+
+    private void Hosomaki_Click(object sender, RoutedEventArgs e)
+    {
+        selectedSushiType = "Hosomaki";
+        ShowIngredients();
+    }
+
+    private void Futomaki_Click(object sender, RoutedEventArgs e)
+    {
+        selectedSushiType = "Futomaki";
+        ShowIngredients();
+    }
+
+    private void OpenSala_Click(object sender, RoutedEventArgs e)
+    {
         SalaGlowna oknoSala = new SalaGlowna();
-        
+
         //liczenie renczne czy cos
         oknoSala.WindowStartupLocation = WindowStartupLocation.Manual;
 
@@ -294,4 +305,3 @@ public partial class GameWindow : Window
         usun.Content = "anulowano";
     }
 }
-
