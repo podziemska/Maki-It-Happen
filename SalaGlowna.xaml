@@ -5,48 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maki_it_happen"
         mc:Ignorable="d"
-        Title="SalaGlowna" Height="750" Width="1000">
+        Title="Sala Główna" Height="750" Width="1000">
 
+    <Window.Resources>
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF9CCA27"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-    <!-- Tło okna -->
+        <Storyboard x:Key="KlientDoKolejkiStoryboard">
+            <DoubleAnimation Storyboard.TargetName="KlientTransform"
+                             Storyboard.TargetProperty="X"
+                             To="-800" Duration="0:0:2" 
+                             AccelerationRatio="0.3"/>
+            <DoubleAnimation Storyboard.TargetName="KlientImage"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" BeginTime="0:0:1.5" Duration="0:0:0.5"/>
+        </Storyboard>
+    </Window.Resources>
+
     <Window.Background>
         <ImageBrush ImageSource="/sala_glowna.png" Stretch="UniformToFill"/>
     </Window.Background>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="799,10,0,0" Height="68" Width="146">
-            <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#62B5B5" FontSize="24" FontWeight="Bold" Height="42" Width="147"/>
+        <Border Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                Background="#80000000" CornerRadius="10" Padding="15,5" Margin="0,0,20,0">
+            <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#62B5B5" 
+                       FontSize="28" FontWeight="Bold"/>
+        </Border>
+
+        <Image x:Name="KlientImage" 
+               Source="/images/klient.png" 
+               Grid.Row="1" 
+               Width="150" Height="300"
+               HorizontalAlignment="Right" 
+               VerticalAlignment="Bottom" 
+               Margin="0,0,50,0"
+               Opacity="0">
+            <Image.RenderTransform>
+                <TranslateTransform x:Name="KlientTransform" X="0" Y="0"/>
+            </Image.RenderTransform>
+        </Image>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+
+            <Button x:Name="NowyKlientBtn"
+                    Content="NOWY KLIENT"
+                    Style="{StaticResource ModernButtonStyle}"
+                    Background="#FFA027CA"
+                    Width="200" Height="50" Margin="10"
+                    Click="NowyKlient_Click"/>
+
+            <Button x:Name="OdbierzBtn"
+                    Content="ODBIERZ ZAMÓWIENIE"
+                    Style="{StaticResource ModernButtonStyle}"
+                    Background="#FF27A9CA"
+                    Width="200" Height="50" Margin="10"
+                    Click="OdbierzZamowienie_Click"/>
+
+            <Button Content="KUCHNIA"
+                    Style="{StaticResource ModernButtonStyle}"
+                    Click="Kuchnia_Click"
+                    Width="200" Height="50" Margin="10"/>
 
         </StackPanel>
-
-        <Button
-            Grid.Row="2"
-            Content="KUCHNIA"
-            Click="Kuchnia"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            Background="#FF9CCA27"
-            Margin="0,50,11,0" Height="40" Width="117"/>
-
-        <Button 
-            Grid.Row="2"
-            Content="PRZYJMIJ ZAMÓWIENIE"
-            Background="White"
-            Margin="18,1,646,33"
-            RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.257"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
     </Grid>
 </Window>
