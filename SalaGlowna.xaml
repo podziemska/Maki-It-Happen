@@ -5,35 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maki_it_happen"
         mc:Ignorable="d"
-        Title="Sala Główna" Height="750" Width="1000">
+        Title="Sala Główna" Height="750" Width="1000"
+        WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <Style x:Key="ModernButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF9CCA27"/>
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="220"/>
+            <Setter Property="Margin" Value="10"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="10" 
+                                BorderBrush="White" 
+                                BorderThickness="1">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.9"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#FF666666"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        <Storyboard x:Key="KlientDoKolejkiStoryboard">
+        <Storyboard x:Key="KlientOdchodziAnimacja">
             <DoubleAnimation Storyboard.TargetName="KlientTransform"
                              Storyboard.TargetProperty="X"
-                             To="-800" Duration="0:0:2" 
-                             AccelerationRatio="0.3"/>
+                             To="-800" 
+                             Duration="0:0:2">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
             <DoubleAnimation Storyboard.TargetName="KlientImage"
                              Storyboard.TargetProperty="Opacity"
-                             To="0" BeginTime="0:0:1.5" Duration="0:0:0.5"/>
+                             To="0" 
+                             BeginTime="0:0:1.5" 
+                             Duration="0:0:0.5"/>
         </Storyboard>
     </Window.Resources>
 
@@ -43,50 +63,62 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" 
-                Background="#80000000" CornerRadius="10" Padding="15,5" Margin="0,0,20,0">
-            <TextBlock x:Name="KasaLabel" Text="KASA: 100$" Foreground="#62B5B5" 
-                       FontSize="28" FontWeight="Bold"/>
+        <Border Grid.Row="0" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Top" 
+                Margin="0,20,30,0"
+                Background="#AA000000" 
+                CornerRadius="15" 
+                Padding="20,10">
+            <TextBlock x:Name="KasaLabel" 
+                       Text="KASA: 0$" 
+                       Foreground="#62B5B5" 
+                       FontSize="32" 
+                       FontWeight="Bold"/>
         </Border>
 
-        <Image x:Name="KlientImage" 
-               Source="/images/klient.png" 
-               Grid.Row="1" 
-               Width="150" Height="300"
-               HorizontalAlignment="Right" 
-               VerticalAlignment="Bottom" 
-               Margin="0,0,50,0"
-               Opacity="0">
-            <Image.RenderTransform>
-                <TranslateTransform x:Name="KlientTransform" X="0" Y="0"/>
-            </Image.RenderTransform>
-        </Image>
+        <Canvas Grid.Row="1">
+            <Image x:Name="KlientImage" 
+                   Source="/images/klient.png" 
+                   Width="180" 
+                   Height="350"
+                   Canvas.Right="50" 
+                   Canvas.Bottom="0"
+                   Opacity="0">
+                <Image.RenderTransform>
+                    <TranslateTransform x:Name="KlientTransform" X="0" Y="0"/>
+                </Image.RenderTransform>
+            </Image>
+        </Canvas>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
 
             <Button x:Name="NowyKlientBtn"
                     Content="NOWY KLIENT"
-                    Style="{StaticResource ModernButtonStyle}"
                     Background="#FFA027CA"
-                    Width="200" Height="50" Margin="10"
+                    Style="{StaticResource MenuButtonStyle}"
                     Click="NowyKlient_Click"/>
 
             <Button x:Name="OdbierzBtn"
                     Content="ODBIERZ ZAMÓWIENIE"
-                    Style="{StaticResource ModernButtonStyle}"
                     Background="#FF27A9CA"
-                    Width="200" Height="50" Margin="10"
+                    IsEnabled="False"
+                    Style="{StaticResource MenuButtonStyle}"
                     Click="OdbierzZamowienie_Click"/>
 
-            <Button Content="KUCHNIA"
-                    Style="{StaticResource ModernButtonStyle}"
-                    Click="Kuchnia_Click"
-                    Width="200" Height="50" Margin="10"/>
+            <Button x:Name="KuchniaBtn"
+                    Content="IDŹ DO KUCHNI"
+                    Background="#FF9CCA27"
+                    Style="{StaticResource MenuButtonStyle}"
+                    Click="Kuchnia_Click"/>
 
         </StackPanel>
     </Grid>
