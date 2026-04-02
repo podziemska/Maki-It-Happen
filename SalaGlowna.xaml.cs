@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation; // Wymagane dla Storyboard
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -19,13 +20,16 @@ namespace Maki_it_happen
     /// </summary>
     public partial class SalaGlowna : Window
     {
+        // Zakładam, że GameState.Kasa jest zdefiniowane w innym pliku
         public int Kasa = GameState.Kasa;
+
         public SalaGlowna()
         {
             InitializeComponent();
             KasaLabel.Text = $"Kasa:{GameState.Kasa}$$";
         }
-        private void Kuchnia(object sender, RoutedEventArgs e)
+
+        private void Kuchnia_Click(object sender, RoutedEventArgs e)
         {
             GameWindow okno = new GameWindow();
 
@@ -35,51 +39,46 @@ namespace Maki_it_happen
             okno.Show();
             this.Close(); // Zamyka obecne okno (np. Salę Główną)
         }
+
         private void OpenShop_Click(object sender, RoutedEventArgs e)
         {
             // Tworzymy i otwieramy nowe okno sklepu
             //ShopWindow oknoSklepu = new ShopWindow();
             //oknoSklepu.ShowDialog(); // ShowDialog blokuje kuchnię, póki nie zamkniesz sklepu
         }
+
         private static Random rng = new Random();
 
+        // --- Nowa logika dla klientów ---
+
+        // Obsługa kliknięcia przycisku "NOWY KLIENT"
+        private void NowyKlient_Click(object sender, RoutedEventArgs e)
+        {
+            // 1. Zresetuj pozycję klienta (wróć z lewej na prawą)
+            KlientTransform.X = 0;
+
+            // 2. Spraw, aby model był w pełni widoczny
+            KlientImage.Opacity = 1;
+
+            // Opcjonalnie: Tutaj można by wywołać generowanie losowego zamówienia
+            // Zamowienie noweZamowienie = GenerujLosoweZamowienie();
+            // MessageBox.Show("Pojawił się nowy klient! Złóż zamówienie.");
+        }
+
+        // Obsługa kliknięcia przycisku "ODBIERZ ZAMÓWIENIE"
+        private void OdbierzZamowienie_Click(object sender, RoutedEventArgs e)
+        {
+            // 1. Znajdź animację zdefiniowaną w zasobach XAML
+            Storyboard sb = (Storyboard)this.FindResource("KlientDoKolejkiStoryboard");
+
+            // 2. Uruchom animację
+            if (sb != null)
+            {
+                sb.Begin();
+                // Opcjonalnie: Dodaj kasę po pomyślnym odebraniu zamówienia
+                // GameState.Kasa += 10; // Przykładowa kwota
+                // KasaLabel.Text = $"Kasa:{GameState.Kasa}$$";
+            }
+        }
     }
 }
-/*
- sorry za komentarz, ale to narazie nie działa, a porzebuje tego do testów
-
-private Zamowienie GenerujLosoweZamowienie()
-{
-List<Product> produkty = new List<Product>()
-{
-new Sushi("California", 22, 1),
-new Sushi("Philadelphia", 24, 2),
-new Sushi("Ebi", 26, 3),
-new Drink("Cola", 8, 4),
-new Drink("Sprite", 8, 5),
-new Drink("Herbata", 6, 6)
-};
-
-int ile = rng.Next(1, 5);
-List<Product> wybrane = new List<Product>();
-
-for (int i = 0; i < ile; i++)
-{
-var p = produkty[rng.Next(produkty.Count)];
-
-// ZMIEN
-wybrane.Add(new Product(p.Nazwa, p.Cena, p.Id));
-}
-
-return new Zamowienie()
-
-{
-//  zmien
-Produkty = wybrane
-};
-}
-
-
-}
-}
-*/
