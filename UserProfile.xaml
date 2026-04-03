@@ -34,8 +34,7 @@
         <Button Canvas.Left="68"
                 Canvas.Top="295"
                 Width="360"
-                Height="160"
-                Click="Button_Click"/>
+                Height="160"/>
 
         <Button Canvas.Left="64"
                 Canvas.Top="492"
@@ -77,7 +76,7 @@
 
         <!-- LABELKI -->
         <Label Canvas.Left="289"
-               Canvas.Top="302"
+               Canvas.Top="314"
                Content="0"
                FontSize="72"
                FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
@@ -89,10 +88,10 @@
                FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         <Label Canvas.Left="806"
-               Canvas.Top="302"
+               Canvas.Top="314"
                Content="0"
                FontSize="72"
-               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
         <Label Canvas.Left="806"
                Canvas.Top="512"
