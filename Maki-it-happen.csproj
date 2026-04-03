@@ -25,9 +25,10 @@
 
 <ItemGroup>
   <Resource Include="images\Profil.png" />
-</ItemGroup>
-
-  <ItemGroup>
+	<Resource Include="nigiri.png" />
+	<Resource Include="onigiri.png" />
+	<Resource Include="hosomaki.png" />
+	<Resource Include="fotomaki.png" />
 	  <Resource Include="images\GameWindow.jpg" />
 	  <Resource Include="images\klient.png" />
 	  <Resource Include="images\RyzG.png" />
