@@ -23,6 +23,10 @@
     <None Remove="sala_glowna.png" />
   </ItemGroup>
 
+<ItemGroup>
+  <Resource Include="images\Profil.png" />
+</ItemGroup>
+
   <ItemGroup>
 	  <Resource Include="images\GameWindow.jpg" />
 	  <Resource Include="images\klient.png" />
