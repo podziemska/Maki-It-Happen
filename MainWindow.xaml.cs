@@ -25,18 +25,31 @@ namespace Maki_it_happen
         {
             SalaGlowna okno = new SalaGlowna();
            
-            // Ustawienie okna na œrodku ekranu przed jego pokazaniem
+            // Ustawienie okna na Å›rodku ekranu przed jego pokazaniem
             okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             okno.Show();
 
-            // Zamykamy obecne okno (np. Menu G³ówne)
+            // Zamykamy obecne okno (np. Menu GÅ‚Ã³wne)
             this.Close();
         }
 
         private void Wyjdz_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(); // The Walking Dead
+        }
+
+        private void Profil_Click(object sender, RoutedEventArgs e)
+        {
+            UserProfile okno = new UserProfile();
+
+
+            okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            okno.Show();
+
+            
+            this.Close();
         }
     }
 }
