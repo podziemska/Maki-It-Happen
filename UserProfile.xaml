@@ -1,14 +1,17 @@
 <Window x:Class="Maki_it_happen.UserProfile"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Maki_it_happen"
-        mc:Ignorable="d"
-        Title="UserProfile" Height="450" Width="800">
+        Title="UserProfile"
+        Height="750"
+        Width="1000"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        RenderOptions.BitmapScalingMode="HighQuality">
+
     <Window.Background>
         <ImageBrush ImageSource="/images/Profil.png"/>
     </Window.Background>
+
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#FFFFFDD8"/>
@@ -17,31 +20,85 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
-                            CornerRadius="20">
+                                CornerRadius="20">
                             <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"/>
+                                              VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Canvas ClipToBounds="True">
 
-        <Button  Margin="70,173,473,0" VerticalAlignment="Top" Height="79" RenderTransformOrigin="0.416,0.342" Background="#FFFFFDD8"></Button>
-        <Button Content=" " HorizontalAlignment="Left" Margin="70,290,0,0" VerticalAlignment="Top" Height="79" Width="257" RenderTransformOrigin="0.416,0.342" Background="#FFFFFDD8"/>
-        <Button Content="" Margin="473,173,70,0" VerticalAlignment="Top" Height="79" RenderTransformOrigin="0.416,0.342" Background="#FFFFFDD8"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="473,290,0,0" VerticalAlignment="Top" Height="79" Width="257" RenderTransformOrigin="0.416,0.342" Background="#FFFFFDD8"/>
-        <Image HorizontalAlignment="Left" Height="168" Margin="62,243,0,0" VerticalAlignment="Top" Width="219" Source="/fotomaki.png" RenderTransformOrigin="0.619,0.726"/>
-        <Image Height="165" Margin="447,257,136,0" VerticalAlignment="Top" Source="/hosomaki.png" RenderTransformOrigin="0.619,0.726"/>
-        <Image HorizontalAlignment="Left" Height="168" Margin="68,128,0,0" VerticalAlignment="Top" Width="223" Source="/onigiri.png" RenderTransformOrigin="0.619,0.726"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="515,128,0,0" VerticalAlignment="Top" Width="100"/>
-        <Image Height="184" Margin="436,120,126,0" VerticalAlignment="Top" Source="/nigiri.png" RenderTransformOrigin="0.619,0.726"/>
-        <Label Content="0" HorizontalAlignment="Left" Margin="198,182,0,0" VerticalAlignment="Top" Height="62" Width="56" FontSize="36" FontWeight="Bold"/>
-        <Label Content="0" HorizontalAlignment="Left" Margin="198,301,0,0" VerticalAlignment="Top" Height="62" Width="56" FontSize="36" FontWeight="Bold"/>
-        <Label Content="0" HorizontalAlignment="Left" Margin="602,181,0,0" VerticalAlignment="Top" Height="62" Width="56" FontSize="36" FontWeight="Bold"/>
-        <Label Content="0" HorizontalAlignment="Left" Margin="602,301,0,0" VerticalAlignment="Top" Height="62" Width="56" FontSize="36" FontWeight="Bold"/>
+        <Button Canvas.Left="68"
+                Canvas.Top="295"
+                Width="360"
+                Height="160"
+                Click="Button_Click"/>
 
+        <Button Canvas.Left="64"
+                Canvas.Top="492"
+                Width="360"
+                Height="160"/>
 
-    </Grid>
+        <Button Canvas.Left="575"
+                Canvas.Top="295"
+                Width="360"
+                Height="160"/>
+
+        <Button Canvas.Left="575"
+                Canvas.Top="492"
+                Width="360"
+                Height="160"/>
+
+        <!-- OBRAZKI -->
+        <Image Canvas.Left="10"
+               Canvas.Top="403"
+               Width="325"
+               Height="324"
+               Source="/fotomaki.png"/>
+
+        <Image Canvas.Left="564"
+               Canvas.Top="434"
+               Height="293"
+               Source="/hosomaki.png"/>
+
+        <Image Canvas.Left="-21"
+               Canvas.Top="210"
+               Width="392"
+               Height="330"
+               Source="/onigiri.png"/>
+
+        <Image Canvas.Left="542"
+               Canvas.Top="206"
+               Height="338"
+               Source="/nigiri.png"/>
+
+        <!-- LABELKI -->
+        <Label Canvas.Left="289"
+               Canvas.Top="302"
+               Content="0"
+               FontSize="72"
+               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <Label Canvas.Left="289"
+               Canvas.Top="512"
+               Content="0"
+               FontSize="72"
+               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Label Canvas.Left="806"
+               Canvas.Top="302"
+               Content="0"
+               FontSize="72"
+               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Label Canvas.Left="806"
+               Canvas.Top="512"
+               Content="0"
+               FontSize="72"
+               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+    </Canvas>
 </Window>
