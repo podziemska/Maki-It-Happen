@@ -54,7 +54,7 @@
                        FontStyle="Italic"/>
 
             <Button Content="ZACZNIJ PRZYGODĘ" Style="{StaticResource SushiButtonStyle}" Click="Graj_Click"/>
-            <Button Content="PROFIL UŻYTKOWNIKA - w budowie" Style="{StaticResource SushiButtonStyle}" />
+            <Button Content="PROFIL UŻYTKOWNIKA" Style="{StaticResource SushiButtonStyle}" Click="Profil_Click" />
             <Button Content="WYJDŹ" Style="{StaticResource SushiButtonStyle}" Click="Wyjdz_Click"/>
         </StackPanel>
 
