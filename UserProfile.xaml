@@ -51,7 +51,7 @@
                 Width="360"
                 Height="160"/>
 
-        <!-- OBRAZKI -->
+     
         <Image Canvas.Left="10"
                Canvas.Top="403"
                Width="325"
@@ -74,7 +74,7 @@
                Height="338"
                Source="/nigiri.png"/>
 
-        <!-- LABELKI -->
+        
         <Label Canvas.Left="289"
                Canvas.Top="314"
                Content="0"
