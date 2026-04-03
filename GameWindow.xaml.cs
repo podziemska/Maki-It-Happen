@@ -15,9 +15,13 @@ namespace Maki_it_happen
         public static int IloscOgorka { get; set; } = 8;
         public static int IloscNori { get; set; } = 12;
     }
+
     public partial class GameWindow : Window
     {
-        // Flagi składników dla aktualnej porcji
+        private int currentStep = 0;
+        private List<string> recipe = new List<string>();
+
+        //BLANKA SĄ NA FALSE!!!! abys pamietala
         private bool czyDodanoRyz = false;
         private bool czyDodanoNori = false;
         private bool czyDodanoOgorek = false;
@@ -31,13 +35,9 @@ namespace Maki_it_happen
             AktualizujInterfejs();
         }
 
-        // Metoda odświeżająca teksty w widoku XAML
         public void AktualizujInterfejs()
         {
-            // Naprawa błędu: KasaLabel teraz pobiera dane z GameState
             KasaLabel.Text = $"KASA: {GameState.Kasa}$";
-
-            // Naprawa błędu: Liczniki pobierają dane z GameState, by zapasy nie wracały po zamknięciu okna
             RiceCountLabel.Text = $"Szt: {GameState.IloscRyzu}";
             FishCountLabel.Text = $"Szt: {GameState.IloscRyby}";
             CucumberCountLabel.Text = $"Szt: {GameState.IloscOgorka}";
@@ -55,75 +55,110 @@ namespace Maki_it_happen
                 MainGrid.Children.Add(img);
                 Panel.SetZIndex(img, -1);
             }
-            catch { /* Ignoruj błąd jeśli brakuje pliku graficznego */ }
+            catch { }
         }
 
-        // --- OBSŁUGA SKŁADNIKÓW ---
+        
+        private void ResetIngredients()
+        {
+            czyDodanoRyz = false;
+            czyDodanoNori = false;
+            czyDodanoOgorek = false;
+            czyDodanoLosos = false;
+        }
+
+        //kolejnosc
+        private bool CanAdd(string ingredient)
+        {
+            if (recipe == null || recipe.Count == 0)
+            {
+                MessageBox.Show("Najpierw wybierz typ sushi!");
+                return false;
+            }
+
+            if (currentStep >= recipe.Count)
+                return false;
+
+            if (recipe[currentStep] != ingredient)
+            {
+                MessageBox.Show($"Teraz powinieneś dodać: {recipe[currentStep]}");
+                return false;
+            }
+
+            return true;
+        }
+
+        // --- SKŁADNIKI ---
 
         private void AddRice_Click(object sender, RoutedEventArgs e)
         {
-            if (czyDodanoRyz) { MessageBox.Show("Ryż już jest na talerzu!"); return; }
+            if (!CanAdd("Rice")) return;
+
             if (GameState.IloscRyzu > 0)
             {
                 GameState.IloscRyzu--;
                 DodajObrazek("RyzG.png");
                 czyDodanoRyz = true;
+                currentStep++;
                 AktualizujInterfejs();
-                usun.Content = "Dodano ryż";
             }
-            else { MessageBox.Show("Brak ryżu!"); }
         }
 
         private void AddFish_Click(object sender, RoutedEventArgs e)
         {
-            if (czyDodanoLosos) return;
+            if (!CanAdd("Fish")) return;
+
             if (GameState.IloscRyby > 0)
             {
                 GameState.IloscRyby--;
                 DodajObrazek("LososG.png");
                 czyDodanoLosos = true;
+                currentStep++;
                 AktualizujInterfejs();
-                usun.Content = "Dodano łososia";
             }
-            else { MessageBox.Show("Brak łososia!"); }
         }
 
         private void AddCucumber_Click(object sender, RoutedEventArgs e)
         {
-            if (czyDodanoOgorek) return;
+            if (!CanAdd("Cucumber")) return;
+
             if (GameState.IloscOgorka > 0)
             {
                 GameState.IloscOgorka--;
                 DodajObrazek("OgorekG.png");
                 czyDodanoOgorek = true;
+                currentStep++;
                 AktualizujInterfejs();
-                usun.Content = "Dodano ogórek";
             }
-            else { MessageBox.Show("Brak ogórka!"); }
         }
 
         private void AddNori_Click(object sender, RoutedEventArgs e)
         {
-            if (czyDodanoNori) return;
+            if (!CanAdd("Nori")) return;
+
             if (GameState.IloscNori > 0)
             {
                 GameState.IloscNori--;
                 DodajObrazek("NoriG.png");
                 czyDodanoNori = true;
+                currentStep++;
                 AktualizujInterfejs();
-                usun.Content = "Dodano nori";
             }
-            else { MessageBox.Show("Brak nori!"); }
         }
 
-        // --- PRZYCISKI FUNKCYJNE ---
+        // --- SERWOWANIE ---
 
         private void Serve_Click(object sender, RoutedEventArgs e)
         {
+            if (currentStep != recipe.Count)
+            {
+                MessageBox.Show("To sushi nie jest jeszcze gotowe!");
+                return;
+            }
+
             bool sukces = false;
             int zarobek = 0;
 
-            // Logika sprawdzania zamówienia
             switch (selectedSushiType)
             {
                 case "Onigiri": if (czyDodanoRyz && czyDodanoNori) { sukces = true; zarobek = 30; } break;
@@ -137,38 +172,40 @@ namespace Maki_it_happen
                 GameState.Kasa += zarobek;
                 MessageBox.Show($"Wydano {selectedSushiType}! Zarobiłeś {zarobek}$");
 
-                // Powrót do sali i aktywacja animacji odjazdu klienta
                 SalaGlowna sala = new SalaGlowna();
                 sala.Show();
                 sala.OdbierzZamowienie_Click(null, null);
                 this.Close();
             }
-            else { MessageBox.Show("Złe składniki dla tego typu sushi!"); }
+            else
+            {
+                MessageBox.Show("Złe składniki!");
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            // Usuwanie obrazków z Gridu
             var doUsuniecia = new List<UIElement>();
             foreach (UIElement child in MainGrid.Children)
-                if (child is Image img && img.Source.ToString().Contains("G.png")) doUsuniecia.Add(child);
+                if (child is Image img && img.Source.ToString().Contains("G.png"))
+                    doUsuniecia.Add(child);
 
-            foreach (var img in doUsuniecia) MainGrid.Children.Remove(img);
+            foreach (var img in doUsuniecia)
+                MainGrid.Children.Remove(img);
 
-            // Resetowanie flag (składniki zużyte przy anulowaniu nie wracają do magazynu - realizm kuchni!)
-            czyDodanoRyz = czyDodanoNori = czyDodanoOgorek = czyDodanoLosos = false;
+            ResetIngredients();
+            currentStep = 0;
+            recipe.Clear();
+
             SushiTypePanel.Visibility = Visibility.Visible;
             IngredientsPanel.Visibility = Visibility.Collapsed;
+
             usun.Content = "Anulowano";
         }
-
         private void OpenShop_Click(object sender, RoutedEventArgs e)
         {
-            // Tworzymy nowe okno sklepu i przekazujemy mu aktualną kuchnię (this)
             ShopWindow oknoSklepu = new ShopWindow(this);
             oknoSklepu.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-            // ShowDialog sprawia, że gracz musi zamknąć sklep, zanim wróci do klikania w kuchni
             oknoSklepu.ShowDialog();
         }
 
@@ -178,22 +215,51 @@ namespace Maki_it_happen
             sala.Show();
             this.Close();
         }
-
-        // --- WYBÓR TYPU ---
+        // --- WYBÓR SUSHI ---
 
         private void ShowIngredients()
         {
             SushiTypePanel.Visibility = Visibility.Collapsed;
             IngredientsPanel.Visibility = Visibility.Visible;
 
-            // Prosta logika widoczności przycisków
             CucumberButton.Visibility = (selectedSushiType == "Futomaki") ? Visibility.Visible : Visibility.Collapsed;
             NoriButton.Visibility = (selectedSushiType == "Nigiri") ? Visibility.Collapsed : Visibility.Visible;
         }
 
-        private void Onigiri_Click(object sender, RoutedEventArgs e) { selectedSushiType = "Onigiri"; ShowIngredients(); }
-        private void Nigiri_Click(object sender, RoutedEventArgs e) { selectedSushiType = "Nigiri"; ShowIngredients(); }
-        private void Hosomaki_Click(object sender, RoutedEventArgs e) { selectedSushiType = "Hosomaki"; ShowIngredients(); }
-        private void Futomaki_Click(object sender, RoutedEventArgs e) { selectedSushiType = "Futomaki"; ShowIngredients(); }
+        private void Onigiri_Click(object sender, RoutedEventArgs e)
+        {
+            ResetIngredients();
+            selectedSushiType = "Onigiri";
+            recipe = new List<string> { "Nori", "Rice","Fish" };
+            currentStep = 0;
+            ShowIngredients();
+        }
+
+        private void Nigiri_Click(object sender, RoutedEventArgs e)
+        {
+            ResetIngredients();
+            selectedSushiType = "Nigiri";
+            recipe = new List<string> { "Rice", "Fish" };
+            currentStep = 0;
+            ShowIngredients();
+        }
+
+        private void Hosomaki_Click(object sender, RoutedEventArgs e)
+        {
+            ResetIngredients();
+            selectedSushiType = "Hosomaki";
+            recipe = new List<string> { "Nori", "Rice", "Fish" };
+            currentStep = 0;
+            ShowIngredients();
+        }
+
+        private void Futomaki_Click(object sender, RoutedEventArgs e)
+        {
+            ResetIngredients();
+            selectedSushiType = "Futomaki";
+            recipe = new List<string> { "Nori", "Rice", "Cucumber", "Fish" };
+            currentStep = 0;
+            ShowIngredients();
+        }
     }
 }
