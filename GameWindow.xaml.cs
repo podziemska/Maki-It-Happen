@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,14 +15,22 @@ namespace Maki_it_happen
         public static int IloscRyby { get; set; } = 5;
         public static int IloscOgorka { get; set; } = 8;
         public static int IloscNori { get; set; } = 12;
+        public static int OnigiriCount { get; set; }
+        public static int NigiriCount { get; set; }
+        public static int HosomakiCount { get; set; }
+        public static int FutomakiCount { get; set; }
+        public static int BestTime { get; set; } = 0;
     }
+
 
     public partial class GameWindow : Window
     {
+        private int timeElapsed = 0;
+        private System.Windows.Threading.DispatcherTimer timer;
+
         private int currentStep = 0;
         private List<string> recipe = new List<string>();
 
-        //BLANKA SĄ NA FALSE!!!! abys pamietala
         private bool czyDodanoRyz = false;
         private bool czyDodanoNori = false;
         private bool czyDodanoOgorek = false;
@@ -33,6 +42,7 @@ namespace Maki_it_happen
         {
             InitializeComponent();
             AktualizujInterfejs();
+            StartTimer();
         }
 
         public void AktualizujInterfejs()
@@ -49,16 +59,18 @@ namespace Maki_it_happen
             Image img = new Image();
             try
             {
-                img.Source = new BitmapImage(new Uri($"pack://application:,,,/images/{nazwa}"));
+                img.Source = new BitmapImage(new Uri($"/images/{nazwa}", UriKind.Relative));
                 img.Stretch = Stretch.Fill;
                 Grid.SetRowSpan(img, 4);
                 MainGrid.Children.Add(img);
                 Panel.SetZIndex(img, -1);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        
         private void ResetIngredients()
         {
             czyDodanoRyz = false;
@@ -67,7 +79,6 @@ namespace Maki_it_happen
             czyDodanoLosos = false;
         }
 
-        //kolejnosc
         private bool CanAdd(string ingredient)
         {
             if (recipe == null || recipe.Count == 0)
@@ -88,6 +99,44 @@ namespace Maki_it_happen
             return true;
         }
 
+        
+        private async void PokazGotoweSushi() // tu chodzi o to aby skladniki zniknelo i pojawilo sie gotowe ale cos zdj nie chca dzialacxd
+        {
+            await Task.Delay(1000);
+            var doUsuniecia = new List<UIElement>();
+            foreach (UIElement child in MainGrid.Children)
+            {
+                if (child is Image img && img.Source != null && img.Source.ToString().Contains("G.png"))
+                    doUsuniecia.Add(child);
+            }
+
+            foreach (var img in doUsuniecia)
+                MainGrid.Children.Remove(img);
+
+            
+
+            string obraz = "";
+
+            switch (selectedSushiType)
+            {
+                case "Onigiri": obraz = "onigiri.png"; break;
+                case "Nigiri": obraz = "nigiri.png"; break;
+                case "Hosomaki": obraz = "hosomaki.png"; break;
+                case "Futomaki": obraz = "futomaki.png"; break;
+            }
+
+            DodajObrazek(obraz);
+            usun.Content = "🍣 GOTOWE!";
+        }
+
+        private void CheckIfFinished()
+        {
+            if (currentStep == recipe.Count)
+            {
+                PokazGotoweSushi();
+            }
+        }
+
         // --- SKŁADNIKI ---
 
         private void AddRice_Click(object sender, RoutedEventArgs e)
@@ -101,6 +150,7 @@ namespace Maki_it_happen
                 czyDodanoRyz = true;
                 currentStep++;
                 AktualizujInterfejs();
+                CheckIfFinished();
             }
         }
 
@@ -115,6 +165,7 @@ namespace Maki_it_happen
                 czyDodanoLosos = true;
                 currentStep++;
                 AktualizujInterfejs();
+                CheckIfFinished();
             }
         }
 
@@ -129,6 +180,7 @@ namespace Maki_it_happen
                 czyDodanoOgorek = true;
                 currentStep++;
                 AktualizujInterfejs();
+                CheckIfFinished();
             }
         }
 
@@ -143,6 +195,7 @@ namespace Maki_it_happen
                 czyDodanoNori = true;
                 currentStep++;
                 AktualizujInterfejs();
+                CheckIfFinished();
             }
         }
 
@@ -150,44 +203,51 @@ namespace Maki_it_happen
 
         private void Serve_Click(object sender, RoutedEventArgs e)
         {
+            timer.Stop();
+
+           
+            if (GameState.BestTime == 0 || timeElapsed < GameState.BestTime)
+            {
+                GameState.BestTime = timeElapsed;
+            }
+
             if (currentStep != recipe.Count)
             {
                 MessageBox.Show("To sushi nie jest jeszcze gotowe!");
                 return;
             }
 
-            bool sukces = false;
             int zarobek = 0;
 
             switch (selectedSushiType)
             {
-                case "Onigiri": if (czyDodanoRyz && czyDodanoNori) { sukces = true; zarobek = 30; } break;
-                case "Nigiri": if (czyDodanoRyz && czyDodanoLosos) { sukces = true; zarobek = 40; } break;
-                case "Hosomaki": if (czyDodanoNori && czyDodanoRyz && czyDodanoLosos) { sukces = true; zarobek = 50; } break;
-                case "Futomaki": if (czyDodanoNori && czyDodanoRyz && czyDodanoLosos && czyDodanoOgorek) { sukces = true; zarobek = 70; } break;
+                case "Onigiri": zarobek = 30 ; break;
+                case "Nigiri": zarobek = 40; break;
+                case "Hosomaki": zarobek = 50; break;
+                case "Futomaki": zarobek = 70; break;
+            }
+            switch (selectedSushiType)
+            {
+                case "Onigiri": GameState.OnigiriCount++; break;
+                case "Nigiri": GameState.NigiriCount++; break;
+                case "Hosomaki": GameState.HosomakiCount++; break;
+                case "Futomaki": GameState.FutomakiCount++; break;
             }
 
-            if (sukces)
-            {
-                GameState.Kasa += zarobek;
-                MessageBox.Show($"Wydano {selectedSushiType}! Zarobiłeś {zarobek}$");
+            GameState.Kasa += zarobek;
+            MessageBox.Show($"Wydano {selectedSushiType}! Zarobiłeś {zarobek}$");
 
-                SalaGlowna sala = new SalaGlowna();
-                sala.Show();
-                sala.OdbierzZamowienie_Click(null, null);
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Złe składniki!");
-            }
+            SalaGlowna sala = new SalaGlowna();
+            sala.Show();
+            sala.OdbierzZamowienie_Click(null, null);
+            this.Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             var doUsuniecia = new List<UIElement>();
             foreach (UIElement child in MainGrid.Children)
-                if (child is Image img && img.Source.ToString().Contains("G.png"))
+                if (child is Image img && img.Source != null && img.Source.ToString().Contains("G.png"))
                     doUsuniecia.Add(child);
 
             foreach (var img in doUsuniecia)
@@ -202,6 +262,7 @@ namespace Maki_it_happen
 
             usun.Content = "Anulowano";
         }
+
         private void OpenShop_Click(object sender, RoutedEventArgs e)
         {
             ShopWindow oknoSklepu = new ShopWindow(this);
@@ -215,7 +276,20 @@ namespace Maki_it_happen
             sala.Show();
             this.Close();
         }
-        // --- WYBÓR SUSHI ---
+
+        private void StartTimer()
+        {
+            timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timeElapsed++;
+            czas.Text = $"⏱ {timeElapsed}s";
+        }
 
         private void ShowIngredients()
         {
