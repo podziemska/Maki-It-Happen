@@ -19,9 +19,20 @@ namespace Maki_it_happen
     /// </summary>
     public partial class UserProfile : Window
     {
+        
         public UserProfile()
         {
             InitializeComponent();
+            AktualizujStatystyki();
+        }
+
+        private void AktualizujStatystyki()
+        {
+            onigiriLicznik.Content = GameState.OnigiriCount; 
+            nigiriLicznik.Content = GameState.NigiriCount;
+            hosomakiLicznik.Content = GameState.HosomakiCount;
+            futomakiLicznik.Content = GameState.FutomakiCount;
+            LicznikCzasu.Content = GameState.BestTime + " s";
         }
     }
 }
