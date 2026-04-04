@@ -51,7 +51,7 @@
                 Width="360"
                 Height="160"/>
 
-     
+
         <Image Canvas.Left="10"
                Canvas.Top="403"
                Width="325"
@@ -74,30 +74,44 @@
                Height="338"
                Source="/nigiri.png"/>
 
+
+        <Label x:Name="onigiriLicznik" 
+            Canvas.Left="289"
+               Canvas.Top="314"
+               Content="0"
+               FontSize="72"
+               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <Label x:Name="futomakiLicznik" 
+               Canvas.Left="289"
+               Canvas.Top="512"
+               Content="0"
+               FontSize="72"
+               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Label x:Name="nigiriLicznik" 
+            Canvas.Left="806"
+               Canvas.Top="314"
+               Content="0"
+               FontSize="72"
+               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <Label  x:Name="hosomakiLicznik" 
+            Canvas.Left="806"
+               Canvas.Top="512"
+               Content="0"
+               FontSize="72"
+               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         
-        <Label Canvas.Left="289"
-               Canvas.Top="314"
-               Content="0"
-               FontSize="72"
-               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
-        <Label Canvas.Left="289"
-               Canvas.Top="512"
-               Content="0"
-               FontSize="72"
-               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Content="Najlepszy czas:" Canvas.Left="314" Canvas.Top="175" Height="56" Width="622" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White"/>
 
-        <Label Canvas.Left="806"
-               Canvas.Top="314"
-               Content="0"
-               FontSize="72"
-               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label x:Name="LicznikCzasu" Content="" Canvas.Left="695" Canvas.Top="184" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
 
-        <Label Canvas.Left="806"
-               Canvas.Top="512"
-               Content="0"
-               FontSize="72"
-               FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+        <Button Content="Ilosc klientow:" Canvas.Left="314" Canvas.Top="100" Height="56" Width="622" FontWeight="Bold" FontSize="18" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label x:Name="LicznikKlientow" Content="" Canvas.Left="695" Canvas.Top="109" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
     </Canvas>
 </Window>
