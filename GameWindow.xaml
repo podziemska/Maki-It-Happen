@@ -129,5 +129,6 @@
                 </UniformGrid>
             </Grid>
         </Border>
+        <TextBlock x:Name="czas" HorizontalAlignment="Left" Margin="271,31,0,0" TextWrapping="Wrap" Text="⏱ 0s" VerticalAlignment="Top" Height="48" Width="94" FontSize="24" FontWeight="Bold" Foreground="White"/>
     </Grid>
 </Window>
