@@ -20,6 +20,7 @@ namespace Maki_it_happen
         public static int HosomakiCount { get; set; }
         public static int FutomakiCount { get; set; }
         public static int BestTime { get; set; } = 0;
+        public static string LastSushi { get; set; } = "";
     }
 
 
@@ -100,9 +101,9 @@ namespace Maki_it_happen
         }
 
         
-        private async void PokazGotoweSushi() // tu chodzi o to aby skladniki zniknelo i pojawilo sie gotowe ale cos zdj nie chca dzialacxd
+        private async void PokazGotoweSushi() // niepotrzebna wsm jedynie co dziala to ze znikaja skladniki 
         {
-            await Task.Delay(1000);
+            await Task.Delay(5000);
             var doUsuniecia = new List<UIElement>();
             foreach (UIElement child in MainGrid.Children)
             {
@@ -113,19 +114,6 @@ namespace Maki_it_happen
             foreach (var img in doUsuniecia)
                 MainGrid.Children.Remove(img);
 
-            
-
-            string obraz = "";
-
-            switch (selectedSushiType)
-            {
-                case "Onigiri": obraz = "onigiri.png"; break;
-                case "Nigiri": obraz = "nigiri.png"; break;
-                case "Hosomaki": obraz = "hosomaki.png"; break;
-                case "Futomaki": obraz = "futomaki.png"; break;
-            }
-
-            DodajObrazek(obraz);
             usun.Content = "🍣 GOTOWE!";
         }
 
@@ -235,6 +223,7 @@ namespace Maki_it_happen
             }
 
             GameState.Kasa += zarobek;
+            GameState.LastSushi = selectedSushiType;
             MessageBox.Show($"Wydano {selectedSushiType}! Zarobiłeś {zarobek}$");
 
             SalaGlowna sala = new SalaGlowna();
@@ -242,6 +231,7 @@ namespace Maki_it_happen
             sala.OdbierzZamowienie_Click(null, null);
             this.Close();
         }
+
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
