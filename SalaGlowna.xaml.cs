@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 
 namespace Maki_it_happen
 {
@@ -13,6 +14,7 @@ namespace Maki_it_happen
         {
             InitializeComponent();
             AktualizujKase();
+            PokazSushi();
         }
 
         public void AktualizujKase()
@@ -62,6 +64,26 @@ namespace Maki_it_happen
             okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             okno.Show();
             this.Hide(); // Używamy Hide zamiast Close, jeśli chcemy wrócić do tej samej sali
+        }
+        private void PokazSushi()
+        {
+            
+            string obraz = "";
+
+            switch (GameState.LastSushi)
+            {
+                case "Onigiri": obraz = "onitest.png"; break; //tego jeszcze n ma
+                case "Nigiri": obraz = "nigiri.png"; break; //tego jeszcze n ma
+                case "Hosomaki": obraz = "hosomakiGotowe.png"; break;
+                case "Futomaki": obraz = "futomakiGotowe.png"; break;
+            }
+
+            if (!string.IsNullOrEmpty(obraz))
+            {
+                SushiImage.Source = new BitmapImage(
+            new Uri($"/images/{obraz}", UriKind.Relative)
+            );
+            }
         }
     }
 }
