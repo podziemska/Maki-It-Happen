@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <None Remove="ikonki jedzenia.png" />
+    <None Remove="images\futomakiGotowe.png" />
+    <None Remove="images\hosomakiGotowe.png" />
     <None Remove="images\klient.png" />
     <None Remove="lososNowy.png" />
     <None Remove="Nori.png" />
@@ -24,6 +26,12 @@
   </ItemGroup>
 
 <ItemGroup>
+  <Resource Include="images\futomakiGotowe.png">
+    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="images\hosomakiGotowe.png">
+    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+  </Resource>
   <Resource Include="images\Profil.png" />
 	<Resource Include="nigiri.png" />
 	<Resource Include="onigiri.png" />
