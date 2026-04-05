@@ -57,11 +57,10 @@
         </Storyboard>
     </Window.Resources>
 
-    <Window.Background>
-        <ImageBrush ImageSource="/sala_glowna.png" Stretch="UniformToFill"/>
-    </Window.Background>
+    
 
     <Grid>
+       
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
@@ -95,7 +94,11 @@
                 </Image.RenderTransform>
             </Image>
         </Canvas>
-
+        
+        <Image Source="/sala_glowna.png"
+        Stretch="Fill"
+        Panel.ZIndex="0" Grid.RowSpan="3"/>
+ 
         <StackPanel Grid.Row="2" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
@@ -119,7 +122,17 @@
                     Background="#FF9CCA27"
                     Style="{StaticResource MenuButtonStyle}"
                     Click="Kuchnia_Click"/>
-
+            
         </StackPanel>
-    </Grid>
+        <Image x:Name="SushiImage"
+
+        Width="1000"
+        Height="750"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Grid.RowSpan="3"
+        Panel.ZIndex="999"
+        IsHitTestVisible="False"/>
+
+        </Grid>
 </Window>
