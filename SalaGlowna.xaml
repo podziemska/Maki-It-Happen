@@ -82,19 +82,15 @@
         </Border>
 
         <Canvas Grid.Row="1">
-            <Image x:Name="KlientImage" 
-                   Source="/images/klient.png" 
-                   Width="180" 
-                   Height="350"
-                   Canvas.Right="50" 
-                   Canvas.Bottom="0"
-                   Opacity="0">
-                <Image.RenderTransform>
-                    <TranslateTransform x:Name="KlientTransform" X="0" Y="0"/>
-                </Image.RenderTransform>
-            </Image>
+            <Image x:Name="KlientImage"
+           Source="/images/klient1.png"
+           Width="180"
+           Height="350"
+           Canvas.Left="750"
+           Canvas.Top="350"
+           Opacity="0"/>
         </Canvas>
-        
+
         <Image Source="/sala_glowna.png"
         Stretch="Fill"
         Panel.ZIndex="0" Grid.RowSpan="3"/>
@@ -133,6 +129,11 @@
         Grid.RowSpan="3"
         Panel.ZIndex="999"
         IsHitTestVisible="False"/>
-
-        </Grid>
+        <TextBlock x:Name="ZamowienieLabel"
+           Foreground="White"
+           FontSize="24"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Top"
+           Margin="20"/>
+    </Grid>
 </Window>
