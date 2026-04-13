@@ -21,6 +21,7 @@ namespace Maki_it_happen
         public static int FutomakiCount { get; set; }
         public static int BestTime { get; set; } = 0;
         public static string LastSushi { get; set; } = "";
+        public static string CurrentOrder { get; set; } = "";
     }
 
 
@@ -193,27 +194,27 @@ namespace Maki_it_happen
         {
             timer.Stop();
 
-           
-            if (GameState.BestTime == 0 || timeElapsed < GameState.BestTime)
-            {
-                GameState.BestTime = timeElapsed;
-            }
-
             if (currentStep != recipe.Count)
             {
                 MessageBox.Show("To sushi nie jest jeszcze gotowe!");
                 return;
             }
 
+            // zapis
+            GameState.LastSushi = selectedSushiType;
+
             int zarobek = 0;
 
             switch (selectedSushiType)
             {
-                case "Onigiri": zarobek = 30 ; break;
+                case "Onigiri": zarobek = 30; break;
                 case "Nigiri": zarobek = 40; break;
                 case "Hosomaki": zarobek = 50; break;
                 case "Futomaki": zarobek = 70; break;
             }
+
+            GameState.Kasa += zarobek;
+
             switch (selectedSushiType)
             {
                 case "Onigiri": GameState.OnigiriCount++; break;
@@ -222,13 +223,11 @@ namespace Maki_it_happen
                 case "Futomaki": GameState.FutomakiCount++; break;
             }
 
-            GameState.Kasa += zarobek;
-            GameState.LastSushi = selectedSushiType;
-            MessageBox.Show($"Wydano {selectedSushiType}! Zarobiłeś {zarobek}$");
+            MessageBox.Show($"Zrobiono {selectedSushiType}");
 
             SalaGlowna sala = new SalaGlowna();
             sala.Show();
-            sala.OdbierzZamowienie_Click(null, null);
+
             this.Close();
         }
 
