@@ -1,6 +1,5 @@
 using System;
 using System.Windows;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 
 namespace Maki_it_happen
@@ -8,7 +7,10 @@ namespace Maki_it_happen
     public partial class SalaGlowna : Window
     {
         // Flaga sprawdzająca, czy klient aktualnie czeka
-        private bool czyKlientCzeka = false;
+        public bool czyKlientCzeka = false;
+        private string aktualneZamowienie = "";
+
+        Random rand = new Random();
 
         public SalaGlowna()
         {
@@ -21,26 +23,16 @@ namespace Maki_it_happen
         {
             KasaLabel.Text = $"Kasa: {GameState.Kasa}$$";
         }
-
-        // Zmieniono na PUBLIC, aby GameWindow mógł wywołać tę metodę
-        public void OdbierzZamowienie_Click(object sender, RoutedEventArgs e)
+        private void GenerujZamowienie()
         {
-            // Szukamy animacji w zasobach XAML
-            Storyboard sb = (Storyboard)this.FindResource("KlientOdchodziAnimacja");
+            string[] menu = { "Onigiri", "Nigiri", "Hosomaki", "Futomaki" };
 
-            if (sb != null)
-            {
-                sb.Begin();
+            aktualneZamowienie = menu[rand.Next(menu.Length)];
 
-                // Resetujemy stan klienta
-                czyKlientCzeka = false;
-                OdbierzBtn.IsEnabled = false;
+            ZamowienieLabel.Text = $"Zamówienie: {aktualneZamowienie}";
+            GameState.CurrentOrder = aktualneZamowienie;
 
-                // Odświeżamy wyświetlanie kasy (pieniądze dodało już GameWindow)
-                AktualizujKase();
-            }
         }
-
         private void NowyKlient_Click(object sender, RoutedEventArgs e)
         {
             if (czyKlientCzeka)
@@ -49,25 +41,49 @@ namespace Maki_it_happen
                 return;
             }
 
-            // KLUCZOWE: Resetujemy transformację X do 0, aby klient 
-            // zawsze zaczynał od lewej krawędzi (lub startowej pozycji)
-            KlientTransform.X = 0;
+            KlientImage.Visibility = Visibility.Visible;
             KlientImage.Opacity = 1;
 
             czyKlientCzeka = true;
             OdbierzBtn.IsEnabled = true;
+
+            GenerujZamowienie();
         }
 
+
+        public void OdbierzZamowienie_Click(object sender, RoutedEventArgs e)
+        {
+            if (!czyKlientCzeka) return;
+
+            bool good = (GameState.LastSushi == GameState.CurrentOrder);
+
+            if (good)
+            {
+                MessageBox.Show("ZADOWOLONY beda obrazki");
+                GameState.Kasa += 10;
+            }
+            else
+            {
+                MessageBox.Show("NIEZADOWOLONY beda obrazki");
+            }
+
+            KlientImage.Visibility = Visibility.Hidden;
+
+            czyKlientCzeka = false;
+            OdbierzBtn.IsEnabled = false;
+            ZamowienieLabel.Text = "";
+
+            AktualizujKase();
+        }
         private void Kuchnia_Click(object sender, RoutedEventArgs e)
         {
             GameWindow okno = new GameWindow();
             okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             okno.Show();
-            this.Hide(); // Używamy Hide zamiast Close, jeśli chcemy wrócić do tej samej sali
+            this.Hide();
         }
         private void PokazSushi()
         {
-            
             string obraz = "";
 
             switch (GameState.LastSushi)
@@ -81,8 +97,8 @@ namespace Maki_it_happen
             if (!string.IsNullOrEmpty(obraz))
             {
                 SushiImage.Source = new BitmapImage(
-            new Uri($"/images/{obraz}", UriKind.Relative)
-            );
+                    new Uri($"/images/{obraz}", UriKind.Relative)
+                );
             }
         }
     }
