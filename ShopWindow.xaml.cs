@@ -11,11 +11,11 @@ namespace Maki_it_happen
         {
             InitializeComponent();
             _GW = gameWindow;
-            nori_cena.Text = (15 * GameState.poziom_trudnosci).ToString();
-            ryz_cena.Text = (20 * GameState.poziom_trudnosci).ToString();
-            losos_cena.Text = (25 * GameState.poziom_trudnosci).ToString();
-            ogorek_cena.Text = (10 * GameState.poziom_trudnosci).ToString();
-            
+            nori_cena.Text = ((15 * GameState.poziom_trudnosci).ToString()+"$");
+            ryz_cena.Text = ((20 * GameState.poziom_trudnosci).ToString() + "$");
+            losos_cena.Text = ((25 * GameState.poziom_trudnosci).ToString() + "$");
+            ogorek_cena.Text = ((10 * GameState.poziom_trudnosci).ToString() + "$");
+
 
         }
 
