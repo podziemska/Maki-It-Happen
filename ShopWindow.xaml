@@ -56,28 +56,11 @@
                 </Button>
                 <Button Style="{StaticResource ShopItemStyle}" >
                     <Grid Margin="15,0">
-                        <TextBlock Text="cos" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="🥒ogórek" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource ShopItemStyle}" >
-                    <Grid Margin="15,0">
-                        <TextBlock Text="cos" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
-                    </Grid>
-                </Button>
-                <Button Style="{StaticResource ShopItemStyle}">
-                    <Grid Margin="15,0">
-                        <TextBlock Text="cos" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
-                    </Grid>
-                </Button>
-                <Button Style="{StaticResource ShopItemStyle}" >
-                    <Grid Margin="15,0">
-                        <TextBlock Text="cos" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
-                    </Grid>
-                </Button>
+                
 
 
             </StackPanel>
