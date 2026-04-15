@@ -113,7 +113,9 @@ namespace Maki_it_happen
         
         private async void PokazGotoweSushi() // niepotrzebna wsm jedynie co dziala to ze znikaja skladniki 
         {
-            await Task.Delay(5000);
+            
+            await Task.Delay(2500);
+            usun.Content = "Sushi Master zawija sushi, bądź cierpliwy!";
             var doUsuniecia = new List<UIElement>();
             foreach (UIElement child in MainGrid.Children)
             {
@@ -123,7 +125,7 @@ namespace Maki_it_happen
 
             foreach (var img in doUsuniecia)
                 MainGrid.Children.Remove(img);
-
+            await Task.Delay(7000);
             usun.Content = "🍣 GOTOWE!";
         }
 
