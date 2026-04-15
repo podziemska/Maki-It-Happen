@@ -15,6 +15,7 @@
     <None Remove="ikonki jedzenia.png" />
     <None Remove="images\futomakiGotowe.png" />
     <None Remove="images\hosomakiGotowe.png" />
+    <None Remove="images\hosomakiGotowe2.png" />
     <None Remove="images\klient.png" />
     <None Remove="lososNowy.png" />
     <None Remove="Nori.png" />
@@ -32,12 +33,21 @@
   <Resource Include="images\hosomakiGotowe.png">
     <CopyToOutputDirectory>Never</CopyToOutputDirectory>
   </Resource>
+  <Resource Include="images\hosomakiGotowe2.png">
+    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+  </Resource>
+	
+	<Resource Include="images\onigiriGotowe2.png">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</Resource>
   <Resource Include="images\Profil.png" />
 	<Resource Include="nigiri.png" />
 	<Resource Include="onigiri.png" />
 	<Resource Include="hosomaki.png" />
 	<Resource Include="fotomaki.png" />
-	  <Resource Include="images\GameWindow.jpg" />
+	  <Resource Include="images\GameWindow.jpg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
 	  <Resource Include="images\klient.png" />
 	  <Resource Include="images\RyzG.png" />
 	  <Resource Include="images\LososG.png" />
