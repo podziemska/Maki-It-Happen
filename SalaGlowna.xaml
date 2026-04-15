@@ -81,15 +81,15 @@
                        FontWeight="Bold"/>
         </Border>
 
-        <Canvas Grid.Row="1">
-            <Image x:Name="KlientImage"
-           Source="/images/klient1.png"
-           Width="180"
-           Height="350"
-           Canvas.Left="750"
-           Canvas.Top="350"
-           Opacity="0"/>
-        </Canvas>
+        <Image x:Name="KlientImage"
+       Source="/images/klientBlanka.png"
+       Width="180"
+       Height="350"
+       Canvas.Left="750"
+       Canvas.Top="350"
+       Opacity="0"
+       Panel.ZIndex="10"/>
+
 
         <Image Source="/sala_glowna.png"
         Stretch="Fill"
