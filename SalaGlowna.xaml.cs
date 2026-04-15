@@ -103,5 +103,20 @@ namespace Maki_it_happen
                 );
             }
         }
+
+        private void Profil_Click(object sender, RoutedEventArgs e)
+        {
+            UserProfile okno = new UserProfile();
+
+
+            okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            okno.Show();
+
+
+            this.Close();
+        }
+
+
     }
 }

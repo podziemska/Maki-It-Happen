@@ -34,5 +34,19 @@ namespace Maki_it_happen
             futomakiLicznik.Content = GameState.FutomakiCount;
             LicznikCzasu.Content = GameState.BestTime + " s";
         }
+
+        
+        private void powrot(object sender, RoutedEventArgs e)
+        {
+            SalaGlowna okno = new SalaGlowna();
+
+            // Ustawienie okna na œrodku ekranu przed jego pokazaniem
+            okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            okno.Show();
+
+            // Zamykamy obecne okno (np. Menu G³ówne)
+            this.Close();
+        }
     }
 }
