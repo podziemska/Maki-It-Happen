@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace Maki_it_happen
 {
@@ -24,6 +25,7 @@ namespace Maki_it_happen
         public static string CurrentOrder { get; set; } = "";
 
         public static int poziom_trudnosci { get; set; } = 1;
+        public static int limit_czasu_sek { get; set; } = 100;
     }
 
 
@@ -240,7 +242,32 @@ namespace Maki_it_happen
             this.Close();
         }
 
+        private void ResetGameView()
+        {
+            
+            
+            var doUsuniecia = MainGrid.Children.OfType<Image>()
+                .Where(img => img.Source != null && img.Source.ToString().Contains("G.png"))
+                .ToList();
 
+            foreach (var img in doUsuniecia)
+            {
+                MainGrid.Children.Remove(img);
+            }
+
+            
+            ResetIngredients(); 
+            currentStep = 0;
+            recipe.Clear();
+            timeElapsed = 0;
+
+            
+            czas.Foreground = Brushes.Black;
+
+            
+            SushiTypePanel.Visibility = Visibility.Visible;
+            IngredientsPanel.Visibility = Visibility.Collapsed;
+        }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             var doUsuniecia = new List<UIElement>();
@@ -260,6 +287,50 @@ namespace Maki_it_happen
 
             usun.Content = "Anulowano";
         }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (timeElapsed < GameState.limit_czasu_sek)
+            {
+                timeElapsed++;
+                czas.Text = $"⏱ {timeElapsed}s /{GameState.limit_czasu_sek}s";
+
+                if (timeElapsed >= GameState.limit_czasu_sek * 0.50)
+                {
+                    czas.Foreground = Brushes.Yellow;
+                }
+
+
+
+                if (timeElapsed >= GameState.limit_czasu_sek * 0.70)
+                {
+                    czas.Foreground = Brushes.Red;
+                }
+            }
+            else
+            {
+                // CZAS MINĄŁ
+                if (sender is DispatcherTimer timer)
+                {
+                    timer.Stop();
+                }
+
+
+                GameState.Kasa -= 20;
+                KasaLabel.Text = GameState.Kasa.ToString()+" $";
+                
+                MessageBox.Show(
+                    "KONIEC CZASU!\n\nSushi nie zostało dostarczone.\nKlienci są wściekli! Płacisz 20$ kary.",
+                    "Limit czasu przekroczony",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning
+                );
+
+                // 3. Resetowanie widoku gry
+                ResetGameView();
+                usun.Content = "Czas minął!";
+            }
+        }
+
 
         private void OpenShop_Click(object sender, RoutedEventArgs e)
         {
@@ -283,11 +354,8 @@ namespace Maki_it_happen
             timer.Start();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            timeElapsed++;
-            czas.Text = $"⏱ {timeElapsed}s";
-        }
+        
+        
 
         private void ShowIngredients()
         {
