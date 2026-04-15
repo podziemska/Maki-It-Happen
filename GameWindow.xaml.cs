@@ -20,7 +20,7 @@ namespace Maki_it_happen
         public static int NigiriCount { get; set; }
         public static int HosomakiCount { get; set; }
         public static int FutomakiCount { get; set; }
-        public static int BestTime { get; set; } = 0; // liczik czasu nie działą w profilu
+        public static int BestTime { get; set; } = 10000; // liczik czasu nie działą w profilu
         public static string LastSushi { get; set; } = "";
         public static string CurrentOrder { get; set; } = "";
 
@@ -237,7 +237,10 @@ namespace Maki_it_happen
             salaRef.AktualizujKase();
             salaRef.Show();
             this.Close();
-
+            if (GameState.BestTime> timeElapsed)
+            {
+                GameState.BestTime = timeElapsed;
+            }
 
             this.Close();
         }
