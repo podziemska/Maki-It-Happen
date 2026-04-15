@@ -101,10 +101,10 @@ namespace Maki_it_happen
 
             switch (GameState.LastSushi)
             {
-                case "Onigiri": obraz = "onigiriGotowe2.png"; break; //tylko to dziala
-                case "Nigiri": obraz = "nigiri.png"; break; //w domu
-                case "Hosomaki": obraz = "hosomakiGotowe2.png"; break; // w domu
-                case "Futomaki": obraz = "futomakiGotowe2.png"; break; // w domu 
+                case "Onigiri": obraz = "onigiriGotowe2.png"; break; 
+                case "Nigiri": obraz = "nigiriGotowe2.png"; break; 
+                case "Hosomaki": obraz = "hosomakiGotowe2.png"; break; 
+                case "Futomaki": obraz = "futomakiGotowe2.png"; break; 
             }
 
             if (!string.IsNullOrEmpty(obraz))

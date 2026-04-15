@@ -295,7 +295,7 @@ namespace Maki_it_happen
             if (timeElapsed < GameState.limit_czasu_sek)
             {
                 timeElapsed++;
-                czas.Text = $"⏱ {timeElapsed}s /{GameState.limit_czasu_sek}s";
+                czas.Text = $"⏱ {timeElapsed}s / {GameState.limit_czasu_sek}s";
 
                 if (timeElapsed >= GameState.limit_czasu_sek * 0.50)
                 {
