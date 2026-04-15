@@ -33,6 +33,7 @@ namespace Maki_it_happen
             hosomakiLicznik.Content = GameState.HosomakiCount;
             futomakiLicznik.Content = GameState.FutomakiCount;
             LicznikCzasu.Content = GameState.BestTime + " s";
+            
         }
 
         

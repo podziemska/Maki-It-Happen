@@ -23,14 +23,16 @@ namespace Maki_it_happen
         }
         private void Graj_Click(object sender, RoutedEventArgs e)
         {
+            PoziomPopup.IsOpen = true;
+        }
+        private void UruchomGre()
+        {
             SalaGlowna okno = new SalaGlowna();
-           
-            // Ustawienie okna na środku ekranu przed jego pokazaniem
+
             okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             okno.Show();
 
-            // Zamykamy obecne okno (np. Menu Główne)
             this.Close();
         }
 
@@ -50,6 +52,32 @@ namespace Maki_it_happen
 
             
             this.Close();
+        }
+
+        private void Latwy_Click(object sender, RoutedEventArgs e)
+        {
+            GameState.poziom_trudnosci = 0.5;
+            PoziomPopup.IsOpen = false;
+            UruchomGre();
+        }
+
+        private void Normalny_Click(object sender, RoutedEventArgs e)
+        {
+            GameState.poziom_trudnosci = 1;
+            PoziomPopup.IsOpen = false;
+            UruchomGre();
+        }
+
+        private void Trudny_Click(object sender, RoutedEventArgs e)
+        {
+            GameState.poziom_trudnosci = 2;
+            PoziomPopup.IsOpen = false;
+            UruchomGre();
+        }
+
+        private void StartGry()
+        {
+            MessageBox.Show("Start gry! Poziom: " + GameState.poziom_trudnosci);
         }
     }
 }

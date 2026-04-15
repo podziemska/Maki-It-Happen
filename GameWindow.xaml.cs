@@ -19,9 +19,11 @@ namespace Maki_it_happen
         public static int NigiriCount { get; set; }
         public static int HosomakiCount { get; set; }
         public static int FutomakiCount { get; set; }
-        public static int BestTime { get; set; } = 0;
+        public static int BestTime { get; set; } = 0; // liczik czasu nie działą w profilu
         public static string LastSushi { get; set; } = "";
         public static string CurrentOrder { get; set; } = "";
+
+        public static double poziom_trudnosci { get; set; } = 1.5;
     }
 
 

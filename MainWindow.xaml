@@ -53,7 +53,49 @@
                        Margin="0,0,0,40" 
                        FontStyle="Italic"/>
 
-            <Button Content="ZACZNIJ PRZYGODĘ" Style="{StaticResource SushiButtonStyle}" Click="Graj_Click"/>
+            <Grid>
+                <Button Content="ZACZNIJ PRZYGODĘ"
+            Style="{StaticResource SushiButtonStyle}"
+            Click="Graj_Click"
+            Height="60" Margin="10,10,10,10"/>
+
+                <!-- Popup z wyborem poziomu -->
+                <Popup x:Name="PoziomPopup"
+           Placement="Center"
+           StaysOpen="False"
+           AllowsTransparency="True">
+
+                    <Border Background="#222"
+                CornerRadius="15"
+                Padding="20"
+                BorderBrush="#FFB347"
+                BorderThickness="2">
+
+                        <StackPanel>
+                            <TextBlock Text="Wybierz poziom trudności"
+                           Foreground="White"
+                           FontSize="18"
+                           Margin="0 0 0 15"
+                           HorizontalAlignment="Center"/>
+
+                            <Button Content="Łatwy"
+                        Style="{StaticResource SushiButtonStyle}"
+                        Margin="5"
+                        Click="Latwy_Click"/>
+
+                            <Button Content="Normalny"
+                        Style="{StaticResource SushiButtonStyle}"
+                        Margin="5"
+                        Click="Normalny_Click"/>
+
+                            <Button Content="Trudny"
+                        Style="{StaticResource SushiButtonStyle}"
+                        Margin="5"
+                        Click="Trudny_Click"/>
+                        </StackPanel>
+                    </Border>
+                </Popup>
+            </Grid>
             <Button Content="PROFIL UŻYTKOWNIKA" Style="{StaticResource SushiButtonStyle}" Click="Profil_Click" />
             <Button Content="WYJDŹ" Style="{StaticResource SushiButtonStyle}" Click="Wyjdz_Click"/>
         </StackPanel>
