@@ -57,7 +57,7 @@ namespace Maki_it_happen
         private void Latwy_Click(object sender, RoutedEventArgs e)
         {
             GameState.poziom_trudnosci = 1;
-            GameState.limit_czasu_sek = 100;
+            GameState.limit_czasu_sek = 60;
             PoziomPopup.IsOpen = false;
             UruchomGre();
         }
@@ -65,7 +65,7 @@ namespace Maki_it_happen
         private void Normalny_Click(object sender, RoutedEventArgs e)
         {
             GameState.poziom_trudnosci = 2;
-            GameState.limit_czasu_sek = 50;
+            GameState.limit_czasu_sek = 30;
             PoziomPopup.IsOpen = false;
             UruchomGre();
         }
@@ -73,7 +73,7 @@ namespace Maki_it_happen
         private void Trudny_Click(object sender, RoutedEventArgs e)
         {
             GameState.poziom_trudnosci = 3;
-            GameState.limit_czasu_sek = 30;
+            GameState.limit_czasu_sek = 15;
             PoziomPopup.IsOpen = false;
             UruchomGre();
         }
