@@ -40,12 +40,17 @@ namespace Maki_it_happen
 
         private string selectedSushiType = "";
 
-        public GameWindow()
+        private SalaGlowna salaRef;
+
+
+        public GameWindow(SalaGlowna sala)
         {
             InitializeComponent();
+            salaRef = sala;
             AktualizujInterfejs();
             StartTimer();
         }
+
 
         public void AktualizujInterfejs()
         {
@@ -224,9 +229,11 @@ namespace Maki_it_happen
             }
 
             MessageBox.Show($"Zrobiono {selectedSushiType}");
+            salaRef.PokazSushi();
+            salaRef.AktualizujKase();
+            salaRef.Show();
+            this.Close();
 
-            SalaGlowna sala = new SalaGlowna();
-            sala.Show();
 
             this.Close();
         }
