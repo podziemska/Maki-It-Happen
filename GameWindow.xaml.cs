@@ -26,6 +26,7 @@ namespace Maki_it_happen
 
         public static int poziom_trudnosci { get; set; } = 1;
         public static int limit_czasu_sek { get; set; } = 100;
+        public static int LiczbaKlientow { get; set; } = 0;
     }
 
 
@@ -44,7 +45,7 @@ namespace Maki_it_happen
 
         private string selectedSushiType = "";
 
-        private SalaGlowna salaRef;
+        public SalaGlowna salaRef;
 
 
         public GameWindow(SalaGlowna sala)
@@ -346,8 +347,8 @@ namespace Maki_it_happen
 
         private void OpenSala_Click(object sender, RoutedEventArgs e)
         {
-            SalaGlowna sala = new SalaGlowna();
-            sala.Show();
+            
+            salaRef.Show();
             this.Close();
         }
 

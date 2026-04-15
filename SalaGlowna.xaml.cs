@@ -12,21 +12,19 @@ namespace Maki_it_happen
 
         public SalaGlowna()
         {
+            MessageBox.Show("TO JEST TA SALA");
+
             InitializeComponent();
             AktualizujKase();
             PokazSushi();
+
         }
         private void Profil_Click(object sender, RoutedEventArgs e)
         {
-            UserProfile okno = new UserProfile();
-
-
+            UserProfile okno = new UserProfile(this);
             okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
             okno.Show();
-
-
-            this.Close();
+            this.Hide();
         }
         public void AktualizujKase()
         {
@@ -42,15 +40,14 @@ namespace Maki_it_happen
 
         private void NowyKlient_Click(object sender, RoutedEventArgs e)
         {
+           
             if (czyKlientCzeka)
             {
                 MessageBox.Show("Przy ladzie już stoi klient!");
                 return;
             }
 
-            KlientImage.Visibility = Visibility.Visible;
-            Panel.SetZIndex(KlientImage, 10);
-
+            KlientImage.Source = new BitmapImage(new Uri("/images/klientBlanka.png", UriKind.Relative));
             czyKlientCzeka = true;
             OdbierzBtn.IsEnabled = true;
 
@@ -65,23 +62,30 @@ namespace Maki_it_happen
 
             if (good)
             {
-                MessageBox.Show("Klient zadowolony!");
+                KlientImage.Source = new BitmapImage(new Uri("images/zadowolony.png", UriKind.Relative));
                 GameState.Kasa += 10;
+                MessageBox.Show("Klient zadowolony!");
+                GameState.LiczbaKlientow++;
             }
             else
             {
-                MessageBox.Show("Klient niezadowolony!");
+                KlientImage.Source = new BitmapImage(new Uri("images/niezadowolony.png", UriKind.Relative));
+                MessageBox.Show("To nie jest to, co zamawiałem!");
+                GameState.LiczbaKlientow++;
             }
 
-            KlientImage.Visibility = Visibility.Hidden;
+            GameState.LastSushi = ""; 
+            GameState.CurrentOrder = ""; 
+                                         
+
             czyKlientCzeka = false;
             OdbierzBtn.IsEnabled = false;
             ZamowienieLabel.Text = "";
-
             SushiImage.Source = null;
-
             AktualizujKase();
+            MessageBox.Show("Liczba klientów: " + GameState.LiczbaKlientow);
         }
+
 
         private void Kuchnia_Click(object sender, RoutedEventArgs e)
         {

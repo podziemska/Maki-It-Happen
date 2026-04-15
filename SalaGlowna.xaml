@@ -40,21 +40,6 @@
             </Style.Triggers>
         </Style>
 
-        <Storyboard x:Key="KlientOdchodziAnimacja">
-            <DoubleAnimation Storyboard.TargetName="KlientTransform"
-                             Storyboard.TargetProperty="X"
-                             To="-800" 
-                             Duration="0:0:2">
-                <DoubleAnimation.EasingFunction>
-                    <QuadraticEase EasingMode="EaseIn"/>
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetName="KlientImage"
-                             Storyboard.TargetProperty="Opacity"
-                             To="0" 
-                             BeginTime="0:0:1.5" 
-                             Duration="0:0:0.5"/>
-        </Storyboard>
     </Window.Resources>
 
 
@@ -81,19 +66,16 @@
                        FontWeight="Bold"/>
         </Border>
 
-        <Image x:Name="KlientImage"
-       Source="/images/klientBlanka.png"
-       Width="180"
-       Height="350"
-       Canvas.Left="750"
-       Canvas.Top="350"
-       Opacity="0"
-       Panel.ZIndex="10" Margin="410,0,410,264" Grid.RowSpan="2"/>
-
-
         <Image Source="/sala_glowna.png"
         Stretch="Fill"
         Panel.ZIndex="0" Grid.RowSpan="3"/>
+
+
+
+
+
+
+
 
         <Button 
 Content="IDŹ DO PROFILU"
@@ -105,9 +87,9 @@ Click="Profil_Click"  Cursor="Hand" Margin="750,36,30,14"/>
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center">
-            
-            
-            
+
+
+
             <Button x:Name="NowyKlientBtn"
                     Content="NOWY KLIENT"
                     Background="#FFA027CA"
@@ -131,18 +113,28 @@ Click="Profil_Click"  Cursor="Hand" Margin="750,36,30,14"/>
 
         </StackPanel>
         <Image x:Name="SushiImage"
+       Width="300"
+       Height="300"
+       HorizontalAlignment="Right"
+       VerticalAlignment="Bottom"
+       Margin="0,0,50,50"
+       Panel.ZIndex="1"
+       Grid.Row="1"/>
 
-        Width="1000"
-        Height="750"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        Panel.ZIndex="999"
-        IsHitTestVisible="False" Margin="-22,0,0,0" Grid.Row="1"/>
+
         <TextBlock x:Name="ZamowienieLabel"
            Foreground="White"
            FontSize="24"
            HorizontalAlignment="Left"
            VerticalAlignment="Top"
            Margin="20"/>
+        
+                <Image x:Name="KlientImage"
+           Width="300" Height="300"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Bottom"
+           Margin="50,0,0,50"
+           Panel.ZIndex="99" 
+           Grid.Row="1"/>
     </Grid>
 </Window>

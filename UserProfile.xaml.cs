@@ -19,22 +19,26 @@ namespace Maki_it_happen
     /// </summary>
     public partial class UserProfile : Window
     {
-        
-        public UserProfile()
+
+        private SalaGlowna sala;
+
+        public UserProfile(SalaGlowna salaRef)
         {
             InitializeComponent();
+            sala = salaRef;
             AktualizujStatystyki();
         }
 
         private void AktualizujStatystyki()
         {
+            LicznikKlientow.Content = GameState.LiczbaKlientow.ToString();
             onigiriLicznik.Content = GameState.OnigiriCount; 
             nigiriLicznik.Content = GameState.NigiriCount;
             hosomakiLicznik.Content = GameState.HosomakiCount;
             futomakiLicznik.Content = GameState.FutomakiCount;
             if (GameState.BestTime == 10000)
             {
-                LicznikCzasu.Content = "Najpierw rospoczni grê";
+                LicznikCzasu.Content = "Najpierw rozpocznij grê";
             }
             else
             {
@@ -45,14 +49,7 @@ namespace Maki_it_happen
         
         private void powrot(object sender, RoutedEventArgs e)
         {
-            SalaGlowna okno = new SalaGlowna();
-
-            // Ustawienie okna na œrodku ekranu przed jego pokazaniem
-            okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-            okno.Show();
-
-            // Zamykamy obecne okno (np. Menu G³ówne)
+            sala.Show();
             this.Close();
         }
     }
