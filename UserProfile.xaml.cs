@@ -32,8 +32,14 @@ namespace Maki_it_happen
             nigiriLicznik.Content = GameState.NigiriCount;
             hosomakiLicznik.Content = GameState.HosomakiCount;
             futomakiLicznik.Content = GameState.FutomakiCount;
-            LicznikCzasu.Content = GameState.BestTime + " s";
-            
+            if (GameState.BestTime == 10000)
+            {
+                LicznikCzasu.Content = "Najpierw rospoczni grê";
+            }
+            else
+            {
+                LicznikCzasu.Content = GameState.BestTime + " s";
+            }
         }
 
         
