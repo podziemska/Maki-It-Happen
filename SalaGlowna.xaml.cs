@@ -78,6 +78,8 @@ namespace Maki_it_happen
             OdbierzBtn.IsEnabled = false;
             ZamowienieLabel.Text = "";
 
+            SushiImage.Source = null;
+
             AktualizujKase();
         }
 
