@@ -1,15 +1,13 @@
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace Maki_it_happen
 {
     public partial class SalaGlowna : Window
     {
-        // Flaga sprawdzająca, czy klient aktualnie czeka
         public bool czyKlientCzeka = false;
-        private string aktualneZamowienie = "";
-
         Random rand = new Random();
 
         public SalaGlowna()
@@ -21,18 +19,16 @@ namespace Maki_it_happen
 
         public void AktualizujKase()
         {
-            KasaLabel.Text = $"Kasa: {GameState.Kasa}$$";
+            KasaLabel.Text = $"Kasa: {GameState.Kasa}$";
         }
+
         private void GenerujZamowienie()
         {
             string[] menu = { "Onigiri", "Nigiri", "Hosomaki", "Futomaki" };
-
-            aktualneZamowienie = menu[rand.Next(menu.Length)];
-
-            ZamowienieLabel.Text = $"Zamówienie: {aktualneZamowienie}";
-            GameState.CurrentOrder = aktualneZamowienie;
-
+            GameState.CurrentOrder = menu[rand.Next(menu.Length)];
+            ZamowienieLabel.Text = $"Zamówienie: {GameState.CurrentOrder}";
         }
+
         private void NowyKlient_Click(object sender, RoutedEventArgs e)
         {
             if (czyKlientCzeka)
@@ -42,14 +38,13 @@ namespace Maki_it_happen
             }
 
             KlientImage.Visibility = Visibility.Visible;
-            KlientImage.Opacity = 1;
+            Panel.SetZIndex(KlientImage, 10);
 
             czyKlientCzeka = true;
             OdbierzBtn.IsEnabled = true;
 
             GenerujZamowienie();
         }
-
 
         public void OdbierzZamowienie_Click(object sender, RoutedEventArgs e)
         {
@@ -59,30 +54,37 @@ namespace Maki_it_happen
 
             if (good)
             {
-                MessageBox.Show("ZADOWOLONY beda obrazki");
+                MessageBox.Show("Klient zadowolony!");
                 GameState.Kasa += 10;
             }
             else
             {
-                MessageBox.Show("NIEZADOWOLONY beda obrazki");
+                MessageBox.Show("Klient niezadowolony!");
             }
 
             KlientImage.Visibility = Visibility.Hidden;
-
             czyKlientCzeka = false;
             OdbierzBtn.IsEnabled = false;
             ZamowienieLabel.Text = "";
 
             AktualizujKase();
         }
+
         private void Kuchnia_Click(object sender, RoutedEventArgs e)
         {
-            GameWindow okno = new GameWindow();
+            if (!czyKlientCzeka)
+            {
+                MessageBox.Show("Najpierw przyjmij zamówienie od klienta!");
+                return;
+            }
+
+            GameWindow okno = new GameWindow(this);
             okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             okno.Show();
             this.Hide();
+
         }
-        private void PokazSushi()
+        public void PokazSushi()
         {
             string obraz = "";
 
