@@ -13,7 +13,11 @@ namespace Maki_it_happen
         {
             base.OnStartup(e);
 
-            MusicPlayer.Play("pack://application:,,,/muzyka.mp3");
+            string path = System.IO.Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "muzyka.mp3");
+
+            MusicPlayer.Play(path);
         }
     }
 
