@@ -14,10 +14,13 @@
   <ItemGroup>
     <None Remove="ikonki jedzenia.png" />
     <None Remove="images\futomakiGotowe.png" />
+    <None Remove="images\futomakiGotowe2.png" />
     <None Remove="images\hosomakiGotowe.png" />
     <None Remove="images\hosomakiGotowe2.png" />
     <None Remove="images\klient.png" />
+    <None Remove="images\nigiriGotowe2.png" />
     <None Remove="lososNowy.png" />
+    <None Remove="muzyka.mp3" />
     <None Remove="Nori.png" />
     <None Remove="ogorek.png" />
     <None Remove="ryz.png" />
@@ -30,10 +33,16 @@
   <Resource Include="images\futomakiGotowe.png">
     <CopyToOutputDirectory>Never</CopyToOutputDirectory>
   </Resource>
+  <Resource Include="images\futomakiGotowe2.png">
+    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+  </Resource>
   <Resource Include="images\hosomakiGotowe.png">
     <CopyToOutputDirectory>Never</CopyToOutputDirectory>
   </Resource>
   <Resource Include="images\hosomakiGotowe2.png">
+    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="images\nigiriGotowe2.png">
     <CopyToOutputDirectory>Never</CopyToOutputDirectory>
   </Resource>
 	
@@ -41,6 +50,9 @@
 		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	</Resource>
   <Resource Include="images\Profil.png" />
+  <Content Include="muzyka.mp3">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </Content>
 	<Resource Include="nigiri.png" />
 	<Resource Include="onigiri.png" />
 	<Resource Include="hosomaki.png" />
