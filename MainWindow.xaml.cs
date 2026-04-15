@@ -56,21 +56,21 @@ namespace Maki_it_happen
 
         private void Latwy_Click(object sender, RoutedEventArgs e)
         {
-            GameState.poziom_trudnosci = 0.5;
+            GameState.poziom_trudnosci = 1;
             PoziomPopup.IsOpen = false;
             UruchomGre();
         }
 
         private void Normalny_Click(object sender, RoutedEventArgs e)
         {
-            GameState.poziom_trudnosci = 1;
+            GameState.poziom_trudnosci = 2;
             PoziomPopup.IsOpen = false;
             UruchomGre();
         }
 
         private void Trudny_Click(object sender, RoutedEventArgs e)
         {
-            GameState.poziom_trudnosci = 2;
+            GameState.poziom_trudnosci = 3;
             PoziomPopup.IsOpen = false;
             UruchomGre();
         }

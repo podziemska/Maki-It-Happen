@@ -37,27 +37,27 @@
                 <Button Style="{StaticResource ShopItemStyle}" Click="BuyRice_Click">
                     <Grid Margin="15,0">
                         <TextBlock Text="🍚 RYŻ (x10)" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock Text="20$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                        <TextBlock Text="20$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold" x:Name="ryz_cena"/>
                     </Grid>
                 </Button>
 
                 <Button Style="{StaticResource ShopItemStyle}" Click="BuyFish_Click">
                     <Grid Margin="15,0">
                         <TextBlock Text="🐟 ŁOSOŚ (x5)" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock Text="50$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                        <TextBlock Text="50$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold" x:Name="losos_cena"/>
                     </Grid>
                 </Button>
 
                 <Button Style="{StaticResource ShopItemStyle}" Click="BuyNori_Click">
                     <Grid Margin="15,0">
                         <TextBlock Text="⬛ NORI (x20)" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                        <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold" x:Name="nori_cena"/>
                     </Grid>
                 </Button>
                 <Button Style="{StaticResource ShopItemStyle}" Click="BuyCucumber_Click" >
                     <Grid Margin="15,0">
                         <TextBlock Text="🥒ogórek" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBlock Text="10$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
+                        <TextBlock Text="10$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold" x:Name="ogorek_cena"/>
                     </Grid>
                 </Button>
                 

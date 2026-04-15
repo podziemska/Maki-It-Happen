@@ -11,13 +11,19 @@ namespace Maki_it_happen
         {
             InitializeComponent();
             _GW = gameWindow;
+            nori_cena.Text = (15 * GameState.poziom_trudnosci).ToString();
+            ryz_cena.Text = (20 * GameState.poziom_trudnosci).ToString();
+            losos_cena.Text = (25 * GameState.poziom_trudnosci).ToString();
+            ogorek_cena.Text = (10 * GameState.poziom_trudnosci).ToString();
+            
+
         }
 
         private void BuyRice_Click(object sender, RoutedEventArgs e)
         {
-            if (GameState.Kasa >= 20)
+            if (GameState.Kasa >= 20*GameState.poziom_trudnosci)
             {
-                GameState.Kasa -= 20;
+                GameState.Kasa -= 20 * GameState.poziom_trudnosci;
                 GameState.IloscRyzu += 10;
                 AktualizujWidok();
             }
@@ -29,9 +35,9 @@ namespace Maki_it_happen
 
         private void BuyFish_Click(object sender, RoutedEventArgs e)
         {
-            if (GameState.Kasa >= 50)
+            if (GameState.Kasa >= 25 * GameState.poziom_trudnosci)
             {
-                GameState.Kasa -= 50;
+                GameState.Kasa -= 25 * GameState.poziom_trudnosci;
                 GameState.IloscRyby += 5;
                 AktualizujWidok();
             }
@@ -43,9 +49,9 @@ namespace Maki_it_happen
 
         private void BuyNori_Click(object sender, RoutedEventArgs e)
         {
-            if (GameState.Kasa >= 15)
+            if (GameState.Kasa >= 15 * GameState.poziom_trudnosci)
             {
-                GameState.Kasa -= 15;
+                GameState.Kasa -= 15 * GameState.poziom_trudnosci;
                 GameState.IloscNori += 20;
                 AktualizujWidok();
             }
@@ -57,9 +63,9 @@ namespace Maki_it_happen
 
         private void BuyCucumber_Click(object sender, RoutedEventArgs e)
         {
-            if (GameState.Kasa >= 10)
+            if (GameState.Kasa >= 10 * GameState.poziom_trudnosci)
             {
-                GameState.Kasa -= 10;
+                GameState.Kasa -= 10 * GameState.poziom_trudnosci;
                 GameState.IloscOgorka += 8;
                 AktualizujWidok();
             }

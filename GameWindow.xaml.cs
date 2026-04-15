@@ -23,7 +23,7 @@ namespace Maki_it_happen
         public static string LastSushi { get; set; } = "";
         public static string CurrentOrder { get; set; } = "";
 
-        public static double poziom_trudnosci { get; set; } = 1.5;
+        public static int poziom_trudnosci { get; set; } = 1;
     }
 
 
