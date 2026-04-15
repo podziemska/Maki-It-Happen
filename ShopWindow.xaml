@@ -54,7 +54,7 @@
                         <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource ShopItemStyle}" >
+                <Button Style="{StaticResource ShopItemStyle}" Click="BuyCucumber_Click" >
                     <Grid Margin="15,0">
                         <TextBlock Text="🥒ogórek" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBlock Text="15$" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#27AE60" FontWeight="Bold"/>
