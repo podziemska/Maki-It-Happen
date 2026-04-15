@@ -90,10 +90,10 @@ namespace Maki_it_happen
 
             switch (GameState.LastSushi)
             {
-                case "Onigiri": obraz = "onitest.png"; break; //tego jeszcze n ma
-                case "Nigiri": obraz = "nigiri.png"; break; //tego jeszcze n ma
-                case "Hosomaki": obraz = "hosomakiGotowe.png"; break;
-                case "Futomaki": obraz = "futomakiGotowe.png"; break;
+                case "Onigiri": obraz = "onigiriGotowe2.png"; break; //tylko to dziala
+                case "Nigiri": obraz = "nigiri.png"; break; //w domu
+                case "Hosomaki": obraz = "hosomakiGotowe2.png"; break; // w domu
+                case "Futomaki": obraz = "futomakiGotowe2.png"; break; // w domu 
             }
 
             if (!string.IsNullOrEmpty(obraz))
@@ -103,20 +103,5 @@ namespace Maki_it_happen
                 );
             }
         }
-
-        private void Profil_Click(object sender, RoutedEventArgs e)
-        {
-            UserProfile okno = new UserProfile();
-
-
-            okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-            okno.Show();
-
-
-            this.Close();
-        }
-
-
     }
 }
