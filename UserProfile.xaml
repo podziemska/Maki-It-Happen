@@ -104,20 +104,22 @@
                FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 
-        <Button Content="Najlepszy czas:" Canvas.Left="314" Canvas.Top="175" Height="56" Width="622" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White"/>
+        <Button Content="Najlepszy czas:" Canvas.Left="314" Canvas.Top="100" Height="56" Width="622" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White"/>
 
         <Label x:Name="LicznikCzasu" Content="" Canvas.Left="695" Canvas.Top="184" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
 
 
 
-        <Button Content="Ilosc klientow:" Canvas.Left="314" Canvas.Top="100" Height="56" Width="622" FontWeight="Bold" FontSize="18" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button Content="Ilosc klientow:" Canvas.Left="314" Canvas.Top="29" Height="56" Width="622" FontWeight="Bold" FontSize="18" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label x:Name="LicznikKlientow" Content="" Canvas.Left="695" Canvas.Top="109" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Button Canvas.Left="428" Canvas.Top="679">
 
         </Button>
-            <Button x:Name="OdbierzBtn"
-            Content="ODBIERZ ZAMOWIENIE"
+        <Button x:Name="OdbierzBtn"
+            Content="WRÓÆ NA SALE G£ÓWN¥"
             Background="#FF27A9CA"
             Click="powrot" HorizontalAlignment="Left" Canvas.Left="368" Canvas.Top="657" VerticalAlignment="Top" Height="53" Width="239"/>
+        <Button Content="Punkty:" Canvas.Left="314" Canvas.Top="175" Height="56" Width="622" FontWeight="Bold" FontSize="18" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label x:Name="punkty" Content="" Canvas.Left="661" Canvas.Top="183" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Canvas>
 </Window>

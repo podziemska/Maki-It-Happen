@@ -27,6 +27,8 @@ namespace Maki_it_happen
         public static int poziom_trudnosci { get; set; } = 1;
         public static int limit_czasu_sek { get; set; } = 100;
         public static int LiczbaKlientow { get; set; } = 0;
+        public static int punkty { get; set; } = 0;
+
     }
 
 
