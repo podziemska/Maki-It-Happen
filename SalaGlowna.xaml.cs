@@ -18,11 +18,9 @@ namespace Maki_it_happen
             AktualizujKase();
             PokazSushi();
             KlientImage.Source = new BitmapImage(new Uri("/images/klientBlanka.png", UriKind.Relative));
-            StartTutorial();
-
 
         }
-        private void StartTutorial()
+        public void StartTutorial()
         {
             tutorialStep = 1;
             MessageBox.Show("Witaj w Maki it happen! Zacznijmy od podstaw.\n\nKliknij przycisk NOWY KLIENT.");

@@ -35,6 +35,7 @@ namespace Maki_it_happen
             okno.Show();
 
             this.Close();
+            okno.StartTutorial();
         }
 
         private void Wyjdz_Click(object sender, RoutedEventArgs e)

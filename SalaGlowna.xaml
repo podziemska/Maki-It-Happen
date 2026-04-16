@@ -129,7 +129,6 @@ Click="Profil_Click"  Cursor="Hand" Margin="750,36,30,14"/>
            Margin="20"/>
 
         <Image x:Name="KlientImage"
-           Width="300" Height="300"
            HorizontalAlignment="Left"
            VerticalAlignment="Bottom"
            Margin="40,0,0,160"
