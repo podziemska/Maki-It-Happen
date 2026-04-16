@@ -118,6 +118,6 @@
             Background="#FF27A9CA"
             Click="powrot" HorizontalAlignment="Left" Canvas.Left="368" Canvas.Top="657" VerticalAlignment="Top" Height="53" Width="239"/>
         <Button Content="Punkty:" Canvas.Left="314" Canvas.Top="175" Height="56" Width="622" FontWeight="Bold" FontSize="18" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Label x:Name="punkty" Content="" Canvas.Left="661" Canvas.Top="183" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="punkty" Content="0" Canvas.Left="661" Canvas.Top="183" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Canvas>
 </Window>
