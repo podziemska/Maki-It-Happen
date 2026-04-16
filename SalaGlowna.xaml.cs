@@ -12,11 +12,11 @@ namespace Maki_it_happen
 
         public SalaGlowna()
         {
-            MessageBox.Show("TO JEST TA SALA");
-
             InitializeComponent();
             AktualizujKase();
             PokazSushi();
+            KlientImage.Source = new BitmapImage(new Uri("/images/klientBlanka.png", UriKind.Relative));
+
 
         }
         private void Profil_Click(object sender, RoutedEventArgs e)
@@ -40,7 +40,6 @@ namespace Maki_it_happen
 
         private void NowyKlient_Click(object sender, RoutedEventArgs e)
         {
-           
             if (czyKlientCzeka)
             {
                 MessageBox.Show("Przy ladzie już stoi klient!");
@@ -48,6 +47,7 @@ namespace Maki_it_happen
             }
 
             KlientImage.Source = new BitmapImage(new Uri("/images/klientBlanka.png", UriKind.Relative));
+
             czyKlientCzeka = true;
             OdbierzBtn.IsEnabled = true;
 
@@ -62,14 +62,14 @@ namespace Maki_it_happen
 
             if (good)
             {
-                KlientImage.Source = new BitmapImage(new Uri("images/zadowolony.png", UriKind.Relative));
+                KlientImage.Source = new BitmapImage(new Uri("/images/zadowolony.png", UriKind.Relative));
                 GameState.Kasa += 10;
                 MessageBox.Show("Klient zadowolony!");
                 GameState.LiczbaKlientow++;
             }
             else
             {
-                KlientImage.Source = new BitmapImage(new Uri("images/niezadowolony.png", UriKind.Relative));
+                KlientImage.Source = new BitmapImage(new Uri("/images/niezadowolony.png", UriKind.Relative));
                 MessageBox.Show("To nie jest to, co zamawiałem!");
                 GameState.LiczbaKlientow++;
             }

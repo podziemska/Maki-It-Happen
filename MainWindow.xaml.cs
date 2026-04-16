@@ -16,10 +16,11 @@ namespace Maki_it_happen
     /// </summary>
     public partial class MainWindow : Window
     {
+        SalaGlowna okno = new SalaGlowna();
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
         private void Graj_Click(object sender, RoutedEventArgs e)
         {
@@ -27,7 +28,7 @@ namespace Maki_it_happen
         }
         private void UruchomGre()
         {
-            SalaGlowna okno = new SalaGlowna();
+
 
             okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
@@ -43,14 +44,14 @@ namespace Maki_it_happen
 
         private void Profil_Click(object sender, RoutedEventArgs e)
         {
-            UserProfile okno = new UserProfile();
+            UserProfile okno2 = new UserProfile(okno);
 
 
-            okno.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            okno2.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            okno.Show();
+            okno2.Show();
 
-            
+
             this.Close();
         }
 
